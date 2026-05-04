@@ -2,9 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import {
   Shield, Smartphone, Users, Bell, KeyRound, Mail, Calendar,
-  ChevronRight, CheckCircle2, Sparkles, Lock, Zap, ArrowRight
+  CheckCircle2, Sparkles, Lock, Zap, ArrowRight, Activity, Cpu, Radar, Fingerprint, Wifi, Plus
 } from "lucide-react";
-import bannerImg from "@/assets/radaccess-banner.png";
 import screenLogin from "@/assets/screen-login.png";
 import screenHome from "@/assets/screen-home.png";
 import screenVisitors from "@/assets/screen-visitors.png";
@@ -33,41 +32,60 @@ const features = [
 
 function Landing() {
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden relative">
+      {/* Global ambient mesh */}
+      <div className="fixed inset-0 pointer-events-none -z-10 opacity-60"
+        style={{ background: "var(--gradient-mesh)", filter: "blur(120px)" }}
+      />
+      <div className="fixed inset-0 pointer-events-none -z-10"
+        style={{
+          backgroundImage: "linear-gradient(oklch(1 0 0 / 0.04) 1px, transparent 1px), linear-gradient(90deg, oklch(1 0 0 / 0.04) 1px, transparent 1px)",
+          backgroundSize: "48px 48px",
+        }}
+      />
+
       {/* NAV */}
-      <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-xl bg-background/60 border-b border-border/40">
-        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
-            <div className="h-9 w-9 rounded-xl bg-[var(--gradient-primary)] grid place-items-center shadow-[var(--shadow-glow)]">
-              <span className="font-black text-primary-foreground text-sm tracking-tighter">R</span>
+      <header className="fixed top-4 inset-x-0 z-50 px-4">
+        <div className="max-w-7xl mx-auto rounded-2xl backdrop-blur-2xl bg-background/40 border border-primary/20 hud-corners shadow-[var(--shadow-hud)]">
+          <div className="px-6 h-14 flex items-center justify-between">
+            <div className="flex items-center gap-2.5">
+              <div className="relative h-9 w-9 rounded-xl bg-[var(--gradient-primary)] grid place-items-center shadow-[var(--shadow-glow)]">
+                <span className="font-black text-primary-foreground text-sm tracking-tighter">R</span>
+                <div className="absolute inset-0 rounded-xl border border-primary-glow/60 animate-hud-pulse" />
+              </div>
+              <div className="flex flex-col leading-none">
+                <span className="font-bold tracking-tight text-sm">RADAccess</span>
+                <span className="text-[10px] text-primary-glow/80 tracking-[0.2em] uppercase">v2.0 · online</span>
+              </div>
             </div>
-            <span className="font-bold tracking-tight">RADAccess</span>
+            <nav className="hidden md:flex items-center gap-8 text-xs font-medium text-muted-foreground tracking-wide uppercase">
+              <a href="#features" className="hover:text-primary-glow transition">Sistemas</a>
+              <a href="#preview" className="hover:text-primary-glow transition">Interface</a>
+              <a href="#how" className="hover:text-primary-glow transition">Protocolo</a>
+              <a href="#cta" className="hover:text-primary-glow transition">Deploy</a>
+            </nav>
+            <a href="#cta" className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider px-4 py-2 rounded-full bg-[var(--gradient-primary)] text-primary-foreground hover:scale-105 transition-transform shadow-[var(--shadow-glow)]">
+              Iniciar <ArrowRight className="h-3.5 w-3.5" />
+            </a>
           </div>
-          <nav className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
-            <a href="#features" className="hover:text-foreground transition">Recursos</a>
-            <a href="#preview" className="hover:text-foreground transition">App</a>
-            <a href="#how" className="hover:text-foreground transition">Como funciona</a>
-            <a href="#cta" className="hover:text-foreground transition">Baixar</a>
-          </nav>
-          <a href="#cta" className="inline-flex items-center gap-1.5 text-sm font-semibold px-4 py-2 rounded-full bg-[var(--gradient-primary)] text-primary-foreground hover:scale-105 transition-transform">
-            Começar <ArrowRight className="h-3.5 w-3.5" />
-          </a>
         </div>
       </header>
 
       {/* HERO */}
-      <section className="relative pt-32 pb-24" style={{ background: "var(--gradient-hero)" }}>
-        {/* Decorative grid */}
-        <div className="absolute inset-0 opacity-[0.07] pointer-events-none"
-          style={{
-            backgroundImage: "linear-gradient(var(--foreground) 1px, transparent 1px), linear-gradient(90deg, var(--foreground) 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
-            maskImage: "radial-gradient(ellipse at center, black 30%, transparent 70%)",
-          }}
-        />
+      <section className="relative pt-36 pb-28 overflow-hidden" style={{ background: "var(--gradient-hero)" }}>
+        {/* HUD scan line */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute inset-x-0 h-px bg-gradient-to-r from-transparent via-primary-glow to-transparent animate-hud-scan opacity-70" />
+        </div>
+        {/* Decorative HUD rings */}
+        <div className="absolute -right-40 top-20 w-[600px] h-[600px] pointer-events-none opacity-30 animate-hud-rotate">
+          <div className="absolute inset-0 rounded-full border border-primary-glow/40" />
+          <div className="absolute inset-10 rounded-full border border-primary-glow/30 border-dashed" />
+          <div className="absolute inset-24 rounded-full border border-accent/40" />
+        </div>
         {/* glow orbs */}
-        <div className="absolute top-20 -left-20 h-96 w-96 rounded-full bg-primary/30 blur-[120px]" />
-        <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-accent/20 blur-[120px]" />
+        <div className="absolute top-20 -left-20 h-96 w-96 rounded-full bg-primary/40 blur-[140px]" />
+        <div className="absolute bottom-0 right-0 h-[28rem] w-[28rem] rounded-full bg-accent/30 blur-[140px]" />
 
         <div className="relative max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center">
           <motion.div
@@ -76,31 +94,36 @@ function Landing() {
             transition={{ duration: 0.8 }}
             className="lg:col-span-7"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-xs font-medium text-primary-glow mb-6">
-              <Sparkles className="h-3.5 w-3.5" /> Tecnologia RADCOM • Residencial
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/15 border border-primary-glow/40 text-[11px] font-semibold text-primary-glow mb-6 backdrop-blur-md tracking-[0.2em] uppercase shadow-[var(--shadow-hud)]">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-glow opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary-glow" />
+              </span>
+              Sistema RADCOM ativo
             </div>
             <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.95] mb-6">
-              Seu condomínio
+              Acesso total.
               <br />
-              <span className="bg-clip-text text-transparent" style={{ backgroundImage: "var(--gradient-primary)" }}>
-                na palma da mão.
+              <span className="text-gradient-primary animate-shimmer" style={{ backgroundImage: "linear-gradient(90deg, oklch(0.78 0.16 230), oklch(0.95 0.16 200), oklch(0.78 0.16 230))" }}>
+                Controle absoluto.
               </span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-xl mb-8 leading-relaxed">
-              Abra portões, convide visitantes e gerencie a portaria — tudo a partir do
-              celular, com a segurança de uma das maiores empresas de tecnologia residencial do Brasil.
+              Uma central de comando de bolso para o seu condomínio. Abra portões, autorize visitantes
+              e monitore acessos com a precisão de quem entende de tecnologia residencial há 30 anos.
             </p>
             <div className="flex flex-wrap gap-3">
-              <a href="#cta" className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[var(--gradient-primary)] text-primary-foreground font-semibold shadow-[var(--shadow-glow)] hover:scale-[1.03] transition-transform">
-                Baixar o app <ArrowRight className="h-4 w-4" />
+              <a href="#cta" className="group relative inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[var(--gradient-primary)] text-primary-foreground font-bold uppercase tracking-wider text-sm shadow-[var(--shadow-glow)] hover:scale-[1.03] transition-transform">
+                <Zap className="h-4 w-4" /> Inicializar
               </a>
-              <a href="#features" className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-border bg-card/50 backdrop-blur hover:bg-card transition">
-                Ver recursos
+              <a href="#features" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-primary-glow/40 bg-card/30 backdrop-blur-md hover:bg-card/60 transition text-sm font-semibold uppercase tracking-wider">
+                <Radar className="h-4 w-4 text-primary-glow" /> Explorar
               </a>
             </div>
-            <div className="flex items-center gap-6 mt-10 text-sm text-muted-foreground">
-              <div className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-accent" /> Grátis para moradores</div>
-              <div className="flex items-center gap-2"><Lock className="h-4 w-4 text-accent" /> Criptografia ponta a ponta</div>
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-3 mt-10 text-xs text-muted-foreground uppercase tracking-widest">
+              <div className="flex items-center gap-2"><CheckCircle2 className="h-3.5 w-3.5 text-accent" /> Grátis p/ moradores</div>
+              <div className="flex items-center gap-2"><Lock className="h-3.5 w-3.5 text-accent" /> Criptografia E2E</div>
+              <div className="flex items-center gap-2"><Fingerprint className="h-3.5 w-3.5 text-accent" /> Biometria</div>
             </div>
           </motion.div>
 
@@ -110,51 +133,86 @@ function Landing() {
             transition={{ duration: 1, delay: 0.2 }}
             className="lg:col-span-5 relative"
           >
-            <div className="relative mx-auto w-[280px] md:w-[320px]">
-              <div className="absolute -inset-10 bg-primary/30 blur-3xl rounded-full" />
+            <div className="relative mx-auto w-[280px] md:w-[340px]">
+              <div className="absolute -inset-16 bg-primary/40 blur-3xl rounded-full animate-hud-pulse" />
+              {/* rotating outer ring */}
+              <div className="absolute -inset-12 rounded-full border border-primary-glow/30 animate-hud-rotate" style={{ animationDuration: "20s" }}>
+                <Plus className="absolute -top-2 left-1/2 -translate-x-1/2 h-4 w-4 text-primary-glow" />
+                <Plus className="absolute -bottom-2 left-1/2 -translate-x-1/2 h-4 w-4 text-primary-glow" />
+                <Plus className="absolute top-1/2 -left-2 -translate-y-1/2 h-4 w-4 text-primary-glow" />
+                <Plus className="absolute top-1/2 -right-2 -translate-y-1/2 h-4 w-4 text-primary-glow" />
+              </div>
               <motion.img
                 src={screenHome}
                 alt="App RADAccess - tela inicial"
-                className="relative rounded-[2.5rem] shadow-[var(--shadow-elegant)] border border-border"
+                className="relative rounded-[2.5rem] shadow-[var(--shadow-elegant)] border border-primary-glow/30"
                 animate={{ y: [0, -12, 0] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
               />
               <motion.img
                 src={screenInvite}
                 alt="Convidar visitante"
-                className="hidden md:block absolute -right-32 top-12 w-[220px] rounded-[2rem] shadow-[var(--shadow-elegant)] border border-border"
+                className="hidden md:block absolute -right-36 top-16 w-[220px] rounded-[2rem] shadow-[var(--shadow-elegant)] border border-primary-glow/30"
                 animate={{ y: [0, 12, 0] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
               />
+              {/* HUD data tag */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.8 }}
+                className="hidden md:flex absolute -left-24 top-32 items-center gap-2 px-3 py-2 rounded-lg bg-card/70 backdrop-blur-md border border-primary-glow/30 hud-corners text-xs"
+              >
+                <Activity className="h-3.5 w-3.5 text-accent animate-pulse" />
+                <div>
+                  <div className="text-[10px] text-muted-foreground uppercase tracking-widest">Latência</div>
+                  <div className="font-mono font-bold text-primary-glow">0.42s</div>
+                </div>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 1 }}
+                className="hidden md:flex absolute -right-12 -bottom-4 items-center gap-2 px-3 py-2 rounded-lg bg-card/70 backdrop-blur-md border border-primary-glow/30 hud-corners text-xs"
+              >
+                <Wifi className="h-3.5 w-3.5 text-accent" />
+                <div>
+                  <div className="text-[10px] text-muted-foreground uppercase tracking-widest">Sinal</div>
+                  <div className="font-mono font-bold text-primary-glow">100%</div>
+                </div>
+              </motion.div>
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* STATS */}
-      <section className="border-y border-border/50 bg-card/30 backdrop-blur">
+      <section className="relative border-y border-primary-glow/20 bg-card/20 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-6 py-10 grid grid-cols-2 md:grid-cols-4 gap-8">
           {[
-            { v: "30+", l: "anos de RADCOM" },
-            { v: "1M+", l: "moradores conectados" },
-            { v: "24/7", l: "monitoramento" },
-            { v: "<1s", l: "abertura de portão" },
+            { v: "30+", l: "anos RADCOM", i: Cpu },
+            { v: "1M+", l: "moradores", i: Users },
+            { v: "24/7", l: "monitoramento", i: Radar },
+            { v: "<1s", l: "resposta", i: Zap },
           ].map((s) => (
-            <div key={s.l} className="text-center">
-              <div className="text-3xl md:text-4xl font-black bg-clip-text text-transparent" style={{ backgroundImage: "var(--gradient-primary)" }}>{s.v}</div>
-              <div className="text-xs md:text-sm text-muted-foreground mt-1">{s.l}</div>
+            <div key={s.l} className="relative text-center hud-corners py-2">
+              <s.i className="mx-auto h-4 w-4 text-primary-glow/70 mb-2" />
+              <div className="font-mono text-3xl md:text-5xl font-black text-gradient-primary">{s.v}</div>
+              <div className="text-[10px] md:text-xs text-muted-foreground mt-1 uppercase tracking-[0.25em]">{s.l}</div>
             </div>
           ))}
         </div>
       </section>
 
       {/* FEATURES */}
-      <section id="features" className="py-28 relative">
+      <section id="features" className="py-32 relative">
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-2xl mb-16">
-            <div className="text-sm font-semibold text-primary-glow uppercase tracking-widest mb-3">Recursos</div>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tight">
-              Tudo que você precisa para um condomínio <span className="text-primary-glow">conectado</span>.
+            <div className="inline-flex items-center gap-2 text-xs font-bold text-primary-glow uppercase tracking-[0.3em] mb-4">
+              <span className="h-px w-8 bg-primary-glow" /> Módulos
+            </div>
+            <h2 className="text-4xl md:text-6xl font-black tracking-tighter leading-tight">
+              Sistemas integrados <br /> em um só <span className="text-gradient-primary">núcleo</span>.
             </h2>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -165,13 +223,17 @@ function Landing() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.05 }}
-                className="group relative p-7 rounded-3xl border border-border bg-[var(--gradient-card)] backdrop-blur hover:border-primary/40 transition-all hover:-translate-y-1"
+                className="group relative p-7 rounded-2xl border border-primary-glow/15 bg-[var(--gradient-card)] backdrop-blur-xl hud-corners hover:border-primary-glow/50 transition-all hover:-translate-y-1 overflow-hidden"
               >
-                <div className="h-12 w-12 rounded-2xl bg-primary/10 border border-primary/20 grid place-items-center mb-5 group-hover:bg-[var(--gradient-primary)] group-hover:border-transparent transition">
+                <div className="absolute top-3 right-3 font-mono text-[10px] text-primary-glow/50 tracking-widest">
+                  {String(i + 1).padStart(3, "0")}
+                </div>
+                <div className="relative h-12 w-12 rounded-xl bg-primary/15 border border-primary-glow/40 grid place-items-center mb-5 group-hover:bg-[var(--gradient-primary)] group-hover:border-transparent transition shadow-[var(--shadow-hud)]">
                   <f.icon className="h-5 w-5 text-primary-glow group-hover:text-primary-foreground transition" />
                 </div>
                 <h3 className="text-lg font-bold mb-2">{f.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{f.desc}</p>
+                <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-primary-glow/40 to-transparent opacity-0 group-hover:opacity-100 transition" />
               </motion.div>
             ))}
           </div>
@@ -179,24 +241,30 @@ function Landing() {
       </section>
 
       {/* PREVIEW */}
-      <section id="preview" className="py-28 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[var(--gradient-hero)] opacity-50" />
+      <section id="preview" className="py-32 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[var(--gradient-hero)] opacity-60" />
+        <div className="absolute inset-0 pointer-events-none" style={{
+          backgroundImage: "radial-gradient(circle at 50% 50%, oklch(0.85 0.18 215 / 0.08) 1px, transparent 1px)",
+          backgroundSize: "24px 24px",
+        }} />
         <div className="relative max-w-7xl mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-20">
-            <div className="text-sm font-semibold text-primary-glow uppercase tracking-widest mb-3">O App</div>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-4">
-              Desenhado para o uso diário.
+            <div className="inline-flex items-center gap-2 text-xs font-bold text-primary-glow uppercase tracking-[0.3em] mb-4">
+              <span className="h-px w-8 bg-primary-glow" /> Interface <span className="h-px w-8 bg-primary-glow" />
+            </div>
+            <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-4">
+              Desenhado como uma <span className="text-gradient-primary">cabine de comando</span>.
             </h2>
             <p className="text-muted-foreground text-lg">
-              Interface limpa, navegação rápida e tudo o que importa a um toque de distância.
+              Cada toque com propósito. Cada tela com a clareza de uma HUD.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 md:gap-4 items-end">
             {[
-              { src: screenLogin, title: "Acesso seguro", desc: "Login protegido com biometria opcional." },
-              { src: screenHome, title: "Painel principal", desc: "Acesso rápido a todas as funções do condomínio." },
-              { src: screenVisitors, title: "Visitantes", desc: "Gerencie quem entra na sua unidade." },
+              { src: screenLogin, title: "Identificação", desc: "Autenticação multifator com biometria opcional." },
+              { src: screenHome, title: "Central", desc: "Tudo do condomínio acessível em um único toque." },
+              { src: screenVisitors, title: "Vigilância", desc: "Controle absoluto sobre quem entra e quando." },
             ].map((s, i) => (
               <motion.div
                 key={s.title}
@@ -206,10 +274,12 @@ function Landing() {
                 transition={{ duration: 0.6, delay: i * 0.1 }}
                 className="text-center"
               >
-                <div className="relative mb-6">
-                  <div className="absolute -inset-6 bg-primary/20 blur-3xl rounded-full" />
-                  <img src={s.src} alt={s.title} className="relative mx-auto rounded-[2rem] border border-border shadow-[var(--shadow-elegant)] max-w-[260px]" />
+                <div className="relative mb-6 group">
+                  <div className="absolute -inset-6 bg-primary/30 blur-3xl rounded-full group-hover:bg-primary/50 transition" />
+                  <div className="absolute inset-0 mx-auto max-w-[260px] rounded-[2rem] border border-primary-glow/30 hud-corners" />
+                  <img src={s.src} alt={s.title} className="relative mx-auto rounded-[2rem] border border-primary-glow/30 shadow-[var(--shadow-elegant)] max-w-[260px] group-hover:scale-[1.02] transition-transform duration-500" />
                 </div>
+                <div className="font-mono text-[10px] text-primary-glow/70 uppercase tracking-[0.3em] mb-1">{String(i + 1).padStart(2, "0")} / 03</div>
                 <h3 className="font-bold text-lg mb-1">{s.title}</h3>
                 <p className="text-sm text-muted-foreground">{s.desc}</p>
               </motion.div>
@@ -219,35 +289,41 @@ function Landing() {
       </section>
 
       {/* HOW IT WORKS */}
-      <section id="how" className="py-28">
+      <section id="how" className="py-32 relative">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <div className="text-sm font-semibold text-primary-glow uppercase tracking-widest mb-3">Como funciona</div>
-              <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-8">
-                Três passos para a sua nova rotina.
+              <div className="inline-flex items-center gap-2 text-xs font-bold text-primary-glow uppercase tracking-[0.3em] mb-4">
+                <span className="h-px w-8 bg-primary-glow" /> Protocolo de inicialização
+              </div>
+              <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-10">
+                Três passos. <br /> <span className="text-gradient-primary">Zero atrito.</span>
               </h2>
               <div className="space-y-6">
                 {[
-                  { n: "01", t: "Baixe o app", d: "Disponível para iOS e Android, gratuito para moradores cadastrados." },
-                  { n: "02", t: "Ative com sua portaria", d: "Sua administradora libera seu acesso em segundos." },
-                  { n: "03", t: "Pronto para usar", d: "Abra portões, convide visitantes e receba notificações em tempo real." },
+                  { n: "01", t: "Download", d: "Disponível para iOS e Android. Instalação em segundos." },
+                  { n: "02", t: "Ativação", d: "Sua administradora autoriza o acesso à sua unidade." },
+                  { n: "03", t: "Online", d: "Sistema totalmente operacional. Você no comando." },
                 ].map((s) => (
-                  <div key={s.n} className="flex gap-5 group">
-                    <div className="text-3xl font-black text-primary-glow w-14 shrink-0">{s.n}</div>
-                    <div>
-                      <h3 className="font-bold text-lg mb-1">{s.t}</h3>
-                      <p className="text-muted-foreground">{s.d}</p>
+                  <div key={s.n} className="flex gap-5 group items-start p-4 rounded-xl border border-transparent hover:border-primary-glow/30 hover:bg-card/30 transition">
+                    <div className="font-mono text-3xl font-black text-gradient-primary w-14 shrink-0">{s.n}</div>
+                    <div className="flex-1">
+                      <h3 className="font-bold text-lg mb-1 flex items-center gap-2">
+                        {s.t}
+                        <span className="h-px flex-1 bg-gradient-to-r from-primary-glow/40 to-transparent" />
+                      </h3>
+                      <p className="text-muted-foreground text-sm">{s.d}</p>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
             <div className="relative">
-              <div className="absolute -inset-10 bg-[var(--gradient-primary)] opacity-30 blur-3xl rounded-full" />
+              <div className="absolute -inset-10 bg-[var(--gradient-primary)] opacity-40 blur-3xl rounded-full animate-hud-pulse" />
+              <div className="absolute -inset-4 rounded-3xl border border-primary-glow/20 animate-hud-rotate" style={{ animationDuration: "40s" }} />
               <div className="relative grid grid-cols-2 gap-4">
-                <img src={screenInvite} alt="Convite" className="rounded-3xl border border-border shadow-[var(--shadow-elegant)] translate-y-8" />
-                <img src={screenVisitors} alt="Visitantes" className="rounded-3xl border border-border shadow-[var(--shadow-elegant)]" />
+                <img src={screenInvite} alt="Convite" className="rounded-3xl border border-primary-glow/30 shadow-[var(--shadow-elegant)] translate-y-8" />
+                <img src={screenVisitors} alt="Visitantes" className="rounded-3xl border border-primary-glow/30 shadow-[var(--shadow-elegant)]" />
               </div>
             </div>
           </div>
@@ -255,28 +331,31 @@ function Landing() {
       </section>
 
       {/* CTA */}
-      <section id="cta" className="py-28 relative">
+      <section id="cta" className="py-32 relative">
         <div className="max-w-5xl mx-auto px-6">
-          <div className="relative overflow-hidden rounded-[2.5rem] border border-primary/30 p-12 md:p-20 text-center" style={{ background: "var(--gradient-primary)" }}>
+          <div className="relative overflow-hidden rounded-[2.5rem] border border-primary-glow/40 p-12 md:p-20 text-center hud-corners shadow-[var(--shadow-glow)]" style={{ background: "var(--gradient-primary)" }}>
             <div className="absolute inset-0 opacity-20"
               style={{
                 backgroundImage: "linear-gradient(rgba(255,255,255,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.4) 1px, transparent 1px)",
                 backgroundSize: "40px 40px",
               }}
             />
-            <Zap className="relative mx-auto h-12 w-12 text-primary-foreground mb-6" />
-            <h2 className="relative text-4xl md:text-6xl font-black text-primary-foreground tracking-tight mb-6">
-              Pronto para acessar
-              <br /> o futuro do seu lar?
+            <div className="absolute -top-20 -right-20 w-60 h-60 rounded-full border border-primary-foreground/30 animate-hud-rotate" />
+            <div className="absolute -bottom-20 -left-20 w-80 h-80 rounded-full border border-primary-foreground/20 animate-hud-rotate" style={{ animationDirection: "reverse" }} />
+            <div className="relative inline-flex h-16 w-16 mx-auto mb-6 rounded-2xl bg-primary-foreground/15 backdrop-blur grid place-items-center border border-primary-foreground/30">
+              <Zap className="h-8 w-8 text-primary-foreground" />
+            </div>
+            <h2 className="relative text-4xl md:text-6xl font-black text-primary-foreground tracking-tighter mb-6 leading-[0.95]">
+              Pronto para assumir <br /> o controle?
             </h2>
             <p className="relative text-primary-foreground/90 text-lg max-w-xl mx-auto mb-10">
-              Baixe agora o RADAccess e descubra como controlar tudo do seu condomínio é simples.
+              Inicialize o RADAccess e transforme o seu condomínio em um sistema inteligente.
             </p>
             <div className="relative flex flex-wrap justify-center gap-3">
-              <a href="#" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-background text-foreground font-semibold hover:scale-105 transition">
+              <a href="#" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-background text-foreground font-bold uppercase tracking-wider text-sm hover:scale-105 transition shadow-[var(--shadow-elegant)]">
                 <Smartphone className="h-4 w-4" /> App Store
               </a>
-              <a href="#" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-background text-foreground font-semibold hover:scale-105 transition">
+              <a href="#" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-background text-foreground font-bold uppercase tracking-wider text-sm hover:scale-105 transition shadow-[var(--shadow-elegant)]">
                 <Smartphone className="h-4 w-4" /> Google Play
               </a>
             </div>
@@ -285,8 +364,8 @@ function Landing() {
       </section>
 
       {/* FOOTER */}
-      <footer className="border-t border-border/50 py-10">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
+      <footer className="border-t border-primary-glow/20 py-10 backdrop-blur-xl bg-background/40">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-muted-foreground uppercase tracking-widest">
           <div className="flex items-center gap-2.5">
             <div className="h-7 w-7 rounded-lg bg-[var(--gradient-primary)] grid place-items-center">
               <span className="font-black text-primary-foreground text-xs">R</span>
@@ -294,9 +373,9 @@ function Landing() {
             <span>© {new Date().getFullYear()} RADCOM • RADAccess Residencial</span>
           </div>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-foreground transition">Privacidade</a>
-            <a href="#" className="hover:text-foreground transition">Termos</a>
-            <a href="#" className="hover:text-foreground transition">Suporte</a>
+            <a href="#" className="hover:text-primary-glow transition">Privacidade</a>
+            <a href="#" className="hover:text-primary-glow transition">Termos</a>
+            <a href="#" className="hover:text-primary-glow transition">Suporte</a>
           </div>
         </div>
       </footer>
