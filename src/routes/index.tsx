@@ -4,10 +4,14 @@ import {
   Shield, Smartphone, Users, Bell, KeyRound, Mail, Calendar,
   CheckCircle2, Sparkles, Lock, Zap, ArrowRight, Activity, Cpu, Radar, Fingerprint, Wifi, Plus
 } from "lucide-react";
-import screenLogin from "@/assets/screen-login.png";
-import screenHome from "@/assets/screen-home.png";
-import screenVisitors from "@/assets/screen-visitors.png";
-import screenInvite from "@/assets/screen-invite.png";
+import screenLogin from "@/assets/login.png";
+import screenHome from "@/assets/home.png";
+import screenVisitors from "@/assets/visitante.png";
+import screenCorrespondencia from "@/assets/correspondencia.png";
+import SplineScene from "@/components/ui/spline";
+import { useEffect, useRef } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -31,7 +35,8 @@ const features = [
 ];
 
 function Landing() {
-  return (
+
+    return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden relative">
       {/* Global ambient mesh */}
       <div className="fixed inset-0 pointer-events-none -z-10 opacity-60"
@@ -72,118 +77,18 @@ function Landing() {
       </header>
 
       {/* HERO */}
-      <section className="relative pt-36 pb-28 overflow-hidden" style={{ background: "var(--gradient-hero)" }}>
-        {/* HUD scan line */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute inset-x-0 h-px bg-gradient-to-r from-transparent via-primary-glow to-transparent animate-hud-scan opacity-70" />
-        </div>
-        {/* Decorative HUD rings */}
-        <div className="absolute -right-40 top-20 w-[600px] h-[600px] pointer-events-none opacity-30 animate-hud-rotate">
-          <div className="absolute inset-0 rounded-full border border-primary-glow/40" />
-          <div className="absolute inset-10 rounded-full border border-primary-glow/30 border-dashed" />
-          <div className="absolute inset-24 rounded-full border border-accent/40" />
-        </div>
-        {/* glow orbs */}
-        <div className="absolute top-20 -left-20 h-96 w-96 rounded-full bg-primary/40 blur-[140px]" />
-        <div className="absolute bottom-0 right-0 h-[28rem] w-[28rem] rounded-full bg-accent/30 blur-[140px]" />
+      <section className="relative min-h-screen overflow-hidden bg-[var(--gradient-hero)]">
 
-        <div className="relative max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="lg:col-span-7"
-          >
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/15 border border-primary-glow/40 text-[11px] font-semibold text-primary-glow mb-6 backdrop-blur-md tracking-[0.2em] uppercase shadow-[var(--shadow-hud)]">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-glow opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary-glow" />
-              </span>
-              Sistema RADCOM ativo
-            </div>
-            <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.95] mb-6">
-              Acesso total.
-              <br />
-              <span className="text-gradient-primary animate-shimmer" style={{ backgroundImage: "linear-gradient(90deg, oklch(0.78 0.16 230), oklch(0.95 0.16 200), oklch(0.78 0.16 230))" }}>
-                Controle absoluto.
-              </span>
-            </h1>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-xl mb-8 leading-relaxed">
-              Uma central de comando de bolso para o seu condomínio. Abra portões, autorize visitantes
-              e monitore acessos com a precisão de quem entende de tecnologia residencial há 30 anos.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <a href="#cta" className="group relative inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[var(--gradient-primary)] text-primary-foreground font-bold uppercase tracking-wider text-sm shadow-[var(--shadow-glow)] hover:scale-[1.03] transition-transform">
-                <Zap className="h-4 w-4" /> Inicializar
-              </a>
-              <a href="#features" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-primary-glow/40 bg-card/30 backdrop-blur-md hover:bg-card/60 transition text-sm font-semibold uppercase tracking-wider">
-                <Radar className="h-4 w-4 text-primary-glow" /> Explorar
-              </a>
-            </div>
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-3 mt-10 text-xs text-muted-foreground uppercase tracking-widest">
-              <div className="flex items-center gap-2"><CheckCircle2 className="h-3.5 w-3.5 text-accent" /> Grátis p/ moradores</div>
-              <div className="flex items-center gap-2"><Lock className="h-3.5 w-3.5 text-accent" /> Criptografia E2E</div>
-              <div className="flex items-center gap-2"><Fingerprint className="h-3.5 w-3.5 text-accent" /> Biometria</div>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="lg:col-span-5 relative"
-          >
-            <div className="relative mx-auto w-[280px] md:w-[340px]">
-              <div className="absolute -inset-16 bg-primary/40 blur-3xl rounded-full animate-hud-pulse" />
-              {/* rotating outer ring */}
-              <div className="absolute -inset-12 rounded-full border border-primary-glow/30 animate-hud-rotate" style={{ animationDuration: "20s" }}>
-                <Plus className="absolute -top-2 left-1/2 -translate-x-1/2 h-4 w-4 text-primary-glow" />
-                <Plus className="absolute -bottom-2 left-1/2 -translate-x-1/2 h-4 w-4 text-primary-glow" />
-                <Plus className="absolute top-1/2 -left-2 -translate-y-1/2 h-4 w-4 text-primary-glow" />
-                <Plus className="absolute top-1/2 -right-2 -translate-y-1/2 h-4 w-4 text-primary-glow" />
-              </div>
-              <motion.img
-                src={screenHome}
-                alt="App RADAccess - tela inicial"
-                className="relative rounded-[2.5rem] shadow-[var(--shadow-elegant)] border border-primary-glow/30"
-                animate={{ y: [0, -12, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              />
-              <motion.img
-                src={screenInvite}
-                alt="Convidar visitante"
-                className="hidden md:block absolute -right-36 top-16 w-[220px] rounded-[2rem] shadow-[var(--shadow-elegant)] border border-primary-glow/30"
-                animate={{ y: [0, 12, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              />
-              {/* HUD data tag */}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.8 }}
-                className="hidden md:flex absolute -left-24 top-32 items-center gap-2 px-3 py-2 rounded-lg bg-card/70 backdrop-blur-md border border-primary-glow/30 hud-corners text-xs"
-              >
-                <Activity className="h-3.5 w-3.5 text-accent animate-pulse" />
-                <div>
-                  <div className="text-[10px] text-muted-foreground uppercase tracking-widest">Latência</div>
-                  <div className="font-mono font-bold text-primary-glow">0.42s</div>
-                </div>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 1 }}
-                className="hidden md:flex absolute -right-12 -bottom-4 items-center gap-2 px-3 py-2 rounded-lg bg-card/70 backdrop-blur-md border border-primary-glow/30 hud-corners text-xs"
-              >
-                <Wifi className="h-3.5 w-3.5 text-accent" />
-                <div>
-                  <div className="text-[10px] text-muted-foreground uppercase tracking-widest">Sinal</div>
-                  <div className="font-mono font-bold text-primary-glow">100%</div>
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
+        {/* Spline 3D — fundo full screen */}
+        <div className="absolute inset-0">
+          <SplineScene style={{ width: '100%', height: '100%' }} />
         </div>
+
+        {/* Seu conteúdo por cima, se houver */}
+        <div className="relative z-10 flex items-center min-h-screen">
+          {/* texto, botões, etc */}
+        </div>
+
       </section>
 
       {/* STATS */}
@@ -204,41 +109,7 @@ function Landing() {
         </div>
       </section>
 
-      {/* FEATURES */}
-      <section id="features" className="py-32 relative">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="max-w-2xl mb-16">
-            <div className="inline-flex items-center gap-2 text-xs font-bold text-primary-glow uppercase tracking-[0.3em] mb-4">
-              <span className="h-px w-8 bg-primary-glow" /> Módulos
-            </div>
-            <h2 className="text-4xl md:text-6xl font-black tracking-tighter leading-tight">
-              Sistemas integrados <br /> em um só <span className="text-gradient-primary">núcleo</span>.
-            </h2>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {features.map((f, i) => (
-              <motion.div
-                key={f.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.05 }}
-                className="group relative p-7 rounded-2xl border border-primary-glow/15 bg-[var(--gradient-card)] backdrop-blur-xl hud-corners hover:border-primary-glow/50 transition-all hover:-translate-y-1 overflow-hidden"
-              >
-                <div className="absolute top-3 right-3 font-mono text-[10px] text-primary-glow/50 tracking-widest">
-                  {String(i + 1).padStart(3, "0")}
-                </div>
-                <div className="relative h-12 w-12 rounded-xl bg-primary/15 border border-primary-glow/40 grid place-items-center mb-5 group-hover:bg-[var(--gradient-primary)] group-hover:border-transparent transition shadow-[var(--shadow-hud)]">
-                  <f.icon className="h-5 w-5 text-primary-glow group-hover:text-primary-foreground transition" />
-                </div>
-                <h3 className="text-lg font-bold mb-2">{f.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{f.desc}</p>
-                <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-primary-glow/40 to-transparent opacity-0 group-hover:opacity-100 transition" />
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       {/* PREVIEW */}
       <section id="preview" className="py-32 relative overflow-hidden">
@@ -261,34 +132,58 @@ function Landing() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 md:gap-4 items-end">
-            {[
-              { src: screenLogin, title: "Identificação", desc: "Autenticação multifator com biometria opcional." },
-              { src: screenHome, title: "Central", desc: "Tudo do condomínio acessível em um único toque." },
-              { src: screenVisitors, title: "Vigilância", desc: "Controle absoluto sobre quem entra e quando." },
-            ].map((s, i) => (
-              <motion.div
-                key={s.title}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="text-center"
-              >
-                <div className="relative mb-6 group">
-                  <div className="absolute -inset-6 bg-primary/30 blur-3xl rounded-full group-hover:bg-primary/50 transition" />
-                  <div className="absolute inset-0 mx-auto max-w-[260px] rounded-[2rem] border border-primary-glow/30 hud-corners" />
-                  <img src={s.src} alt={s.title} className="relative mx-auto rounded-[2rem] border border-primary-glow/30 shadow-[var(--shadow-elegant)] max-w-[260px] group-hover:scale-[1.02] transition-transform duration-500" />
-                </div>
-                <div className="font-mono text-[10px] text-primary-glow/70 uppercase tracking-[0.3em] mb-1">{String(i + 1).padStart(2, "0")} / 03</div>
-                <h3 className="font-bold text-lg mb-1">{s.title}</h3>
-                <p className="text-sm text-muted-foreground">{s.desc}</p>
-              </motion.div>
-            ))}
+
+            {/* 01 — Identificação (anima com scroll) */}
+            <div className="text-center">
+              <div className="relative mb-6 group">
+                <div className="absolute inset-0 mx-auto max-w-[260px]" />
+                <img src={screenLogin} alt="Identificação" className="relative mx-auto max-w-[260px] group-hover:scale-[1.02] transition-transform duration-500" />
+              </div>
+              <div className="font-mono text-[10px] text-primary-glow/70 uppercase tracking-[0.3em] mb-1">01 / 03</div>
+              <h3 className="font-bold text-lg mb-1">Identificação</h3>
+              <p className="text-sm text-muted-foreground">Autenticação multifator com biometria opcional.</p>
+            </div>
+
+            {/* 02 — Central */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="text-center"
+            >
+              <div className="relative mb-6 group">
+                <div className="absolute -inset-6 mx-auto max-w-[260px]" />
+                <img src={screenHome} alt="Central" className="relative mx-auto max-w-[260px] group-hover:scale-[1.02] transition-transform duration-500" />
+              </div>
+              <div className="font-mono text-[10px] text-primary-glow/70 uppercase tracking-[0.3em] mb-1">02 / 03</div>
+              <h3 className="font-bold text-lg mb-1">Central</h3>
+              <p className="text-sm text-muted-foreground">Tudo do condomínio acessível em um único toque.</p>
+            </motion.div>
+
+            {/* 03 — Vigilância */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-center"
+            >
+              <div className="relative mb-6 group">
+                <div className="absolute inset-0 mx-auto max-w-[260px]" />
+                <img src={screenVisitors} alt="Vigilância" className="relative mx-auto max-w-[260px] group-hover:scale-[1.02] transition-transform duration-500" />
+              </div>
+              <div className="font-mono text-[10px] text-primary-glow/70 uppercase tracking-[0.3em] mb-1">03 / 03</div>
+              <h3 className="font-bold text-lg mb-1">Vigilância</h3>
+              <p className="text-sm text-muted-foreground">Controle absoluto sobre quem entra e quando.</p>
+            </motion.div>
+
           </div>
         </div>
-      </section>
-
+      </section> 
+      
       {/* HOW IT WORKS */}
+      
       <section id="how" className="py-32 relative">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -322,10 +217,64 @@ function Landing() {
               <div className="absolute -inset-10 bg-[var(--gradient-primary)] opacity-40 blur-3xl rounded-full animate-hud-pulse" />
               <div className="absolute -inset-4 rounded-3xl border border-primary-glow/20 animate-hud-rotate" style={{ animationDuration: "40s" }} />
               <div className="relative grid grid-cols-2 gap-4">
-                <img src={screenInvite} alt="Convite" className="rounded-3xl border border-primary-glow/30 shadow-[var(--shadow-elegant)] translate-y-8" />
-                <img src={screenVisitors} alt="Visitantes" className="rounded-3xl border border-primary-glow/30 shadow-[var(--shadow-elegant)]" />
+                <img src={screenCorrespondencia} alt="Convite" className="rounded-3xl border border-primary-glow/30 shadow-[var(--shadow-elegant)] translate-y-8" />
+                <img src={screenCorrespondencia} alt="Visitantes" className="rounded-3xl border border-primary-glow/30 shadow-[var(--shadow-elegant)]" />
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FEATURES */}
+      <section id="features" className="relative py-24 md:py-32 overflow-hidden">
+        {/* Background Effects */}
+        <div className="absolute top-10 left-1/3 w-80 h-80 bg-primary/10 rounded-full blur-[110px]" />
+        <div className="absolute bottom-10 right-1/3 w-96 h-96 bg-primary-glow/10 rounded-full blur-[110px]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.08),transparent_45%),radial-gradient(circle_at_80%_60%,rgba(147,51,234,0.08),transparent_45%)]" />
+
+        <div className="container mx-auto px-6 relative z-10">
+          {/* Header */}
+          <div className="text-center space-y-4 mb-14">
+            <div className="inline-block px-4 py-1.5 rounded-full bg-primary/10 border border-primary-glow/20 backdrop-blur-sm">
+              <span className="text-sm text-primary-glow font-medium uppercase tracking-wider">• Módulos •</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-black leading-tight tracking-tighter">
+              <span className="text-foreground">Sistemas integrados em um só </span>
+              <span className="bg-gradient-to-r from-primary-glow via-primary to-primary-glow bg-clip-text text-transparent">
+                núcleo
+              </span>
+              <span className="text-foreground">.</span>
+            </h2>
+          </div>
+
+          {/* Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
+            {features.map((f, i) => (
+              <motion.div
+                key={f.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.05 }}
+                className="group relative overflow-hidden rounded-3xl bg-black/20 shadow-2xl shadow-black/30 border border-primary-glow/15 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-primary-glow/50 p-7"
+              >
+                {/* Index */}
+                <div className="absolute top-3 right-3 font-mono text-[10px] text-primary-glow/50 tracking-widest">
+                  {String(i + 1).padStart(3, "0")}
+                </div>
+
+                {/* Icon */}
+                <div className="relative h-12 w-12 rounded-xl bg-primary/15 border border-primary-glow/40 grid place-items-center mb-5 group-hover:bg-[var(--gradient-primary)] group-hover:border-transparent transition shadow-[var(--shadow-hud)]">
+                  <f.icon className="h-5 w-5 text-primary-glow group-hover:text-primary-foreground transition" />
+                </div>
+
+                <h3 className="text-lg font-bold mb-2">{f.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{f.desc}</p>
+
+                {/* Bottom shine */}
+                <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-primary-glow/40 to-transparent opacity-0 group-hover:opacity-100 transition" />
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
