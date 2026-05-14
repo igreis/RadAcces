@@ -36,7 +36,7 @@ const features = [
 
 function Landing() {
 
-    return (
+  return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden relative">
       {/* Global ambient mesh */}
       <div className="fixed inset-0 pointer-events-none -z-10 opacity-60"
@@ -77,18 +77,80 @@ function Landing() {
       </header>
 
       {/* HERO */}
-      <section className="relative min-h-screen overflow-hidden bg-[var(--gradient-hero)]">
-
-        {/* Spline 3D — fundo full screen */}
-        <div className="absolute inset-0">
-          <SplineScene style={{ width: '100%', height: '100%' }} />
+      <section className="relative pt-36 pb-28 overflow-hidden" style={{ background: "var(--gradient-hero)" }}>
+        {/* HUD scan line */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute inset-x-0 h-px bg-gradient-to-r from-transparent via-primary-glow to-transparent animate-hud-scan opacity-70" />
         </div>
-
-        {/* Seu conteúdo por cima, se houver */}
-        <div className="relative z-10 flex items-center min-h-screen">
-          {/* texto, botões, etc */}
+        {/* Decorative HUD rings */}
+        <div className="absolute -right-40 top-20 w-[600px] h-[600px] pointer-events-none opacity-30 animate-hud-rotate">
+          <div className="absolute inset-0 rounded-full border border-primary-glow/40" />
+          <div className="absolute inset-10 rounded-full border border-primary-glow/30 border-dashed" />
+          <div className="absolute inset-24 rounded-full border border-accent/40" />
         </div>
+        {/* glow orbs */}
+        <div className="absolute top-20 -left-20 h-96 w-96 rounded-full bg-primary/40 blur-[140px]" />
+        <div className="absolute bottom-0 right-0 h-[28rem] w-[28rem] rounded-full bg-accent/30 blur-[140px]" />
 
+        <div className="relative max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="lg:col-span-7"
+          >
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/15 border border-primary-glow/40 text-[11px] font-semibold text-primary-glow mb-6 backdrop-blur-md tracking-[0.2em] uppercase shadow-[var(--shadow-hud)]">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-glow opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary-glow" />
+              </span>
+              Sistema RADCOM ativo
+            </div>
+            <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.95] mb-6">
+              Acesso total.
+              <br />
+              <span className="text-gradient-primary animate-shimmer" style={{ backgroundImage: "linear-gradient(90deg, oklch(0.78 0.16 230), oklch(0.95 0.16 200), oklch(0.78 0.16 230))" }}>
+                Controle absoluto.
+              </span>
+            </h1>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-xl mb-8 leading-relaxed">
+              Uma central de comando de bolso para o seu condomínio. Abra portões, autorize visitantes
+              e monitore acessos com a precisão de quem entende de tecnologia residencial há 30 anos.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <a href="#cta" className="group relative inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[var(--gradient-primary)] text-primary-foreground font-bold uppercase tracking-wider text-sm shadow-[var(--shadow-glow)] hover:scale-[1.03] transition-transform">
+                <Zap className="h-4 w-4" /> Inicializar
+              </a>
+              <a href="#features" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-primary-glow/40 bg-card/30 backdrop-blur-md hover:bg-card/60 transition text-sm font-semibold uppercase tracking-wider">
+                <Radar className="h-4 w-4 text-primary-glow" /> Explorar
+              </a>
+            </div>
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-3 mt-10 text-xs text-muted-foreground uppercase tracking-widest">
+              <div className="flex items-center gap-2"><CheckCircle2 className="h-3.5 w-3.5 text-accent" /> Grátis p/ moradores</div>
+              <div className="flex items-center gap-2"><Lock className="h-3.5 w-3.5 text-accent" /> Criptografia E2E</div>
+              <div className="flex items-center gap-2"><Fingerprint className="h-3.5 w-3.5 text-accent" /> Biometria</div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="lg:col-span-5 relative"
+          >
+            <div className="relative mx-auto w-[500px] md:w-[700px] h-[700px] rounded-full">
+              <div className="absolute -inset-16 bg-primary/40 blur-3xl rounded-full animate-hud-pulse" />
+              {/* rotating outer ring */}
+              <div className="absolute -inset-12 rounded-full border border-primary-glow/30 animate-hud-rotate" style={{ animationDuration: "20s" }}>
+                <Plus className="absolute -top-2 left-1/2 -translate-x-1/2 h-4 w-4 text-primary-glow" />
+                <Plus className="absolute -bottom-2 left-1/2 -translate-x-1/2 h-4 w-4 text-primary-glow" />
+                <Plus className="absolute top-1/2 -left-2 -translate-y-1/2 h-4 w-4 text-primary-glow" />
+                <Plus className="absolute top-1/2 -right-2 -translate-y-1/2 h-4 w-4 text-primary-glow" />
+              </div>
+              <SplineScene style={{ width: '100%', height: '100%', position: 'absolute'}} />
+            </div>
+          </motion.div>
+        </div>
       </section>
 
       {/* STATS */}
@@ -180,10 +242,10 @@ function Landing() {
 
           </div>
         </div>
-      </section> 
-      
+      </section>
+
       {/* HOW IT WORKS */}
-      
+
       <section id="how" className="py-32 relative">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
