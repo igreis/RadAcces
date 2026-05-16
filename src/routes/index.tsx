@@ -9,6 +9,10 @@ import screenHome from "@/assets/home.png";
 import screenVisitors from "@/assets/visitante.png";
 import screenCorrespondencia from "@/assets/correspondencia.png";
 import SplineScene from "@/components/ui/spline";
+import screenDownload from "@/assets/download.png"
+import controlid from "@/assets/icons/controlid.svg"
+import hikivision from "@/assets/icons/hikvision.svg"
+import intelbras from "@/assets/icons/intelbras.svg"
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -35,6 +39,14 @@ const features = [
 ];
 
 function Landing() {
+
+  const logos = [
+    { src: controlid, alt: 'Control iD' },
+    { src: hikivision, alt: 'Hikvision' },
+    { src: intelbras, alt: 'Intelbras' },
+  ]
+
+  const doubled = [...logos, ...logos, ...logos, ...logos]
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden relative">
@@ -147,30 +159,43 @@ function Landing() {
                 <Plus className="absolute top-1/2 -left-2 -translate-y-1/2 h-4 w-4 text-primary-glow" />
                 <Plus className="absolute top-1/2 -right-2 -translate-y-1/2 h-4 w-4 text-primary-glow" />
               </div>
-              <SplineScene style={{ width: '100%', height: '100%', position: 'absolute'}} />
+              <SplineScene style={{ width: '100%', height: '100%', position: 'absolute' }} />
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* STATS */}
-      <section className="relative border-y border-primary-glow/20 bg-card/20 backdrop-blur-xl">
-        <div className="max-w-7xl mx-auto px-6 py-10 grid grid-cols-2 md:grid-cols-4 gap-8">
-          {[
-            { v: "30+", l: "anos RADCOM", i: Cpu },
-            { v: "1M+", l: "moradores", i: Users },
-            { v: "24/7", l: "monitoramento", i: Radar },
-            { v: "<1s", l: "resposta", i: Zap },
-          ].map((s) => (
-            <div key={s.l} className="relative text-center hud-corners py-2">
-              <s.i className="mx-auto h-4 w-4 text-primary-glow/70 mb-2" />
-              <div className="font-mono text-3xl md:text-5xl font-black text-gradient-primary">{s.v}</div>
-              <div className="text-[10px] md:text-xs text-muted-foreground mt-1 uppercase tracking-[0.25em]">{s.l}</div>
-            </div>
-          ))}
+      <section className="relative border-y border-primary-glow/20 bg-card/20 backdrop-blur-xl overflow-hidden py-10">
+        {/* Título */}
+        <div className="max-w-5xl mx-auto text-center mb-8 px-6">
+          <div className="flex items-center justify-center gap-3">
+            <span className="h-px w-12 bg-primary-glow/40" />
+            <span className="text-[20px] uppercase tracking-[0.3em] text-primary-glow/70 font-mono">
+              Integrações
+            </span>
+            <span className="h-px w-12 bg-primary-glow/40" />
+          </div>
+        </div>
+
+        {/* Carrossel com máscara de fade */}
+        <div className="max-w-5xl mx-auto overflow-hidden" id="integracoes-mask">
+          <div id="integracoes-track">
+            {doubled.map((logo, i) => (
+              <div
+                key={i}
+                className="flex items-center justify-center px-10 py-4"
+              >
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  className="h-16 w-auto object-contain  transition-all duration-300"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </section>
-
 
 
       {/* PREVIEW */}
@@ -195,8 +220,14 @@ function Landing() {
 
           <div className="grid md:grid-cols-3 gap-8 md:gap-4 items-end">
 
-            {/* 01 — Identificação (anima com scroll) */}
-            <div className="text-center">
+            {/* 01 — Identificação */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0 }}
+              className="text-center"
+            >
               <div className="relative mb-6 group">
                 <div className="absolute inset-0 mx-auto max-w-[260px]" />
                 <img src={screenLogin} alt="Identificação" className="relative mx-auto max-w-[260px] group-hover:scale-[1.02] transition-transform duration-500" />
@@ -204,14 +235,14 @@ function Landing() {
               <div className="font-mono text-[10px] text-primary-glow/70 uppercase tracking-[0.3em] mb-1">01 / 03</div>
               <h3 className="font-bold text-lg mb-1">Identificação</h3>
               <p className="text-sm text-muted-foreground">Autenticação multifator com biometria opcional.</p>
-            </div>
+            </motion.div>
 
             {/* 02 — Central */}
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
+              transition={{ duration: 0.8, delay: 0.15 }}
               className="text-center"
             >
               <div className="relative mb-6 group">
@@ -228,7 +259,7 @@ function Landing() {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
               className="text-center"
             >
               <div className="relative mb-6 group">
@@ -249,7 +280,14 @@ function Landing() {
       <section id="how" className="py-32 relative">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
+
+            {/* TEXTO — esquerda */}
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, ease: "easeOut" }}
+            >
               <div className="inline-flex items-center gap-2 text-xs font-bold text-primary-glow uppercase tracking-[0.3em] mb-4">
                 <span className="h-px w-8 bg-primary-glow" /> Protocolo de inicialização
               </div>
@@ -261,8 +299,15 @@ function Landing() {
                   { n: "01", t: "Download", d: "Disponível para iOS e Android. Instalação em segundos." },
                   { n: "02", t: "Ativação", d: "Sua administradora autoriza o acesso à sua unidade." },
                   { n: "03", t: "Online", d: "Sistema totalmente operacional. Você no comando." },
-                ].map((s) => (
-                  <div key={s.n} className="flex gap-5 group items-start p-4 rounded-xl border border-transparent hover:border-primary-glow/30 hover:bg-card/30 transition">
+                ].map((s, i) => (
+                  <motion.div
+                    key={s.n}
+                    initial={{ opacity: 0, x: -24 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.2 + i * 0.15, ease: "easeOut" }}
+                    className="flex gap-5 group items-start p-4 rounded-xl border border-transparent hover:border-primary-glow/30 hover:bg-card/30 transition"
+                  >
                     <div className="font-mono text-3xl font-black text-gradient-primary w-14 shrink-0">{s.n}</div>
                     <div className="flex-1">
                       <h3 className="font-bold text-lg mb-1 flex items-center gap-2">
@@ -271,22 +316,43 @@ function Landing() {
                       </h3>
                       <p className="text-muted-foreground text-sm">{s.d}</p>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
-            </div>
-            <div className="relative">
+            </motion.div>
+
+            {/* IMAGENS — direita, flutua após entrar */}
+            <motion.div
+              className="relative"
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.1, ease: "easeOut" }}
+            >
               <div className="absolute -inset-10 bg-[var(--gradient-primary)] opacity-40 blur-3xl rounded-full animate-hud-pulse" />
               <div className="absolute -inset-4 rounded-3xl border border-primary-glow/20 animate-hud-rotate" style={{ animationDuration: "40s" }} />
+
               <div className="relative grid grid-cols-2 gap-4">
-                <img src={screenCorrespondencia} alt="Convite" className="rounded-3xl border border-primary-glow/30 shadow-[var(--shadow-elegant)] translate-y-8" />
-                <img src={screenCorrespondencia} alt="Visitantes" className="rounded-3xl border border-primary-glow/30 shadow-[var(--shadow-elegant)]" />
+                <motion.img
+                  src={screenDownload}
+                  alt="Convite"
+                  className="rounded-3xl border border-primary-glow/30 shadow-[var(--shadow-elegant)] translate-y-8"
+                  animate={{ y: [32, 20, 32] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                />
+                <motion.img
+                  src={screenCorrespondencia}
+                  alt="Visitantes"
+                  className="rounded-3xl border border-primary-glow/30 shadow-[var(--shadow-elegant)]"
+                  animate={{ y: [0, -12, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                />
               </div>
-            </div>
+            </motion.div>
+
           </div>
         </div>
       </section>
-
       {/* FEATURES */}
       <section id="features" className="relative py-24 md:py-32 overflow-hidden">
         {/* Background Effects */}
