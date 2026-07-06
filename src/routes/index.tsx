@@ -13,10 +13,14 @@ import screenDownload from "@/assets/download.png"
 import controlid from "@/assets/icons/controlid.svg"
 import hikivision from "@/assets/icons/hikvision.svg"
 import intelbras from "@/assets/icons/intelbras.svg"
+import nice from "@/assets/icons/nice.png"
+import zk_teco from "@/assets/icons/zk-teco.png"
 import system from "@/assets/system.svg"
 import logo from '../assets/logo.png'
 import WhatsAppFloat from '../components/ui/Whatsappfloat'
 import { useState } from "react";
+import CountUp from "react-countup";
+import Footer from "@/footer";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -183,6 +187,8 @@ function Landing() {
     { src: controlid, alt: 'Control iD' },
     { src: hikivision, alt: 'Hikvision' },
     { src: intelbras, alt: 'Intelbras' },
+    { src: nice, alt: 'nice' },
+    { src: zk_teco, alt: 'ZK Teco'}
   ];
 
   const doubled = [...logos, ...logos, ...logos, ...logos];
@@ -208,8 +214,11 @@ function Landing() {
         <div className="max-w-7xl mx-auto rounded-2xl backdrop-blur-2xl bg-background/40 border border-primary/20 hud-corners shadow-[var(--shadow-hud)]">
           <div className="px-6 h-14 flex items-center justify-between">
             <div className="flex items-center gap-2.5">
-              <div className="flex flex-col leading-none max-w-[120px]">
-                <img src={logo} />
+              <div className="flex flex-col leading-none max-w-[160px]">
+                <a href="#hero">
+                  <img src={logo} />
+                </a>
+                
               </div>
             </div>
             <nav className="hidden md:flex items-center gap-8 text-xs font-medium text-muted-foreground tracking-wide uppercase">
@@ -218,15 +227,16 @@ function Landing() {
               <a href="#how" className="hover:text-primary-glow transition">Protocolo</a>
               <a href="#faq" className="hover:text-primary-glow transition">FAQ</a>
             </nav>
-            <a href="#faq" className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider px-4 py-2 rounded-full bg-[var(--gradient-primary)] text-primary-foreground hover:scale-105 transition-transform shadow-[var(--shadow-glow)]">
-              Iniciar <ArrowRight className="h-3.5 w-3.5" />
+            <a  href="https://wa.me/5534992318655"
+              target="_blank" className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider px-4 py-2 rounded-full bg-[var(--gradient-primary)] text-primary-foreground hover:scale-105 transition-transform shadow-[var(--shadow-glow)]">
+              Seja nosso parceiro <ArrowRight className="h-3.5 w-3.5" />
             </a>
           </div>
         </div>
       </header>
 
       {/* HERO */}
-      <section className="relative pt-36 pb-28 overflow-hidden" style={{ background: "var(--gradient-hero)" }}>
+      <section className="relative pt-36 pb-28 overflow-hidden" style={{ background: "var(--gradient-hero)" }} id="hero">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute inset-x-0 h-px bg-gradient-to-r from-transparent via-primary-glow to-transparent animate-hud-scan opacity-70" />
         </div>
@@ -252,9 +262,9 @@ function Landing() {
               </span>
               SINTAC!
             </div>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[0.95] mb-6">
-              Sua Marca.
-              <br />
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-4xl font-black tracking-tighter leading-[0.95] mb-6">
+              Sua Marca. {" "}
+              
               <span className="text-gradient-primary animate-shimmer" style={{ backgroundImage: "linear-gradient(90deg, oklch(0.32 0.14 20), oklch(0.65 0.18 20), oklch(0.32 0.14 20))" }}>
                 Nossa Tecnologia
               </span>
@@ -262,7 +272,7 @@ function Landing() {
             <h3
               className="text-4xl sm:text-5xl font-black tracking-tighter text-[var(--foreground)] mb-4"
             >
-              Potencialize sua empresa de segurançacom a plataforma de{" "}
+              Potencialize sua empresa de segurança com a plataforma de{" "}
               <span
                 className="bg-clip-text text-transparent"
                 style={{
@@ -288,10 +298,40 @@ function Landing() {
                 <Radar className="h-4 w-4 text-primary-glow" /> Falar com um Especialista
               </a>
             </div>
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-3 mt-10 text-xs text-muted-foreground uppercase tracking-widest">
-              <div className="flex items-center gap-2"><CheckCircle2 className="h-3.5 w-3.5 text-accent" /> Grátis p/ moradores</div>
-              <div className="flex items-center gap-2"><Lock className="h-3.5 w-3.5 text-accent" /> Criptografia E2E</div>
-              <div className="flex items-center gap-2"><Fingerprint className="h-3.5 w-3.5 text-accent" /> Biometria</div>
+           <div className="grid grid-cols-3 gap-8 smpt-10 max-w-3xl mx-auto lg:mx-0 mt-12">
+              <div className="space-y-2">
+                <div className="text-4xl font-bold bg-gradient-to-br from-primary to-secondary bg-clip-text text-transparent">
+                
+                    <CountUp end={100} duration={5} />
+                
+                    <span>0</span>
+                  
+                  <span>+</span>
+                </div>
+                <div className="text-sm text-muted-foreground">Projetos Entregues</div>
+              </div>
+              <div className="space-y-2">
+                <div className="text-4xl font-bold bg-gradient-to-br from-primary to-secondary bg-clip-text text-transparent">
+                
+                    <CountUp end={50} duration={5} />
+               
+                    <span>0</span>
+                 
+                  <span>+</span>
+                </div>
+                <div className="text-sm text-muted-foreground">Clientes Satisfeitos</div>
+              </div>
+              <div className="space-y-2">
+                <div className="text-4xl font-bold bg-gradient-to-br from-primary to-secondary bg-clip-text text-transparent">
+                 
+                    <CountUp end={5} duration={5} />
+                 
+                    <span>0</span>
+                
+                  <span>+</span>
+                </div>
+                <div className="text-sm text-muted-foreground">Anos de Experiência</div>
+              </div>
             </div>
           </motion.div>
 
@@ -315,172 +355,6 @@ function Landing() {
         </div>
       </section>
 
-
-      {/* PREVIEW */}
-      <section id="preview" className="py-12 lg:py-28 relative overflow-hidden">
-        <div className="absolute top-10 left-1/3 w-80 h-80 bg-primary/10 rounded-full blur-[110px]" />
-        <div className="absolute bottom-10 right-1/3 w-96 h-96 bg-primary-glow/10 rounded-full blur-[110px]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.08),transparent_45%),radial-gradient(circle_at_80%_60%,rgba(147,51,234,0.08),transparent_45%)]" />
-        <div className="py-10 flex flex-col lg:flex-row items-center justify-center gap-8 max-w-7xl mx-auto px-6">
-          <div className="max-w-[1100px] w-full flex flex-col gap-4">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
-              SINTAC — {" "}
-              <span
-                className="text-gradient-primary animate-shimmer"
-                style={{ backgroundImage: "linear-gradient(90deg, oklch(0.32 0.14 20), oklch(0.65 0.18 20), oklch(0.32 0.14 20))" }}
-              >
-                Acesso Total.
-              </span>
-              <br />
-              Controle Absoluto
-            </h1>
-            <p className="text-muted-foreground text-lg leading-relaxed">
-              Desenvolvemos uma solução robusta, escalável e de rápida implantação, projetada especificamente para empresas de segurança eletrônica, facilities e controle de acesso.Nós cuidamos da evolução tecnológica, da estabilidade dos servidores e das atualizações de segurança, enquanto você lidera o mercado local com uma solução de alto valor agregado. Entregue uma central de comando de bolso para o seu cliente: abra portões, autorize visitantes e monitore acessos com total mobilidade e precisão.
-            </p>
-          </div>
-          <div className="flex-shrink-0 lg:translate-x-16 max-w-[650px] w-full lg:w-auto">
-            <img
-              src={system}
-              alt="Sistema Sintac"
-              className="w-full lg:max-w-[700px] rounded-xl"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* HOW IT WORKS */}
-      <section id="how" className="py-18 lg:py-32 relative">
-        <div className="max-w-7xl mx-auto px-6">
-
-          {/* Cabeçalho */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.9, ease: "easeOut" }}
-            className="max-w-3xl mb-16"
-          >
-            <div className="inline-flex items-center gap-2 text-xs font-bold text-primary-glow uppercase tracking-[0.3em] mb-4">
-              <span className="h-px w-8 bg-primary-glow" /> Diferenciais
-            </div>
-            <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-6">
-              Por que os integradores <br />
-              <span className="text-gradient-primary">escolhem a nossa plataforma?</span>
-            </h2>
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-              Elimine custos fixos e tenha total liberdade para escalar seu negócio com a nossa tecnologia.
-            </p>
-          </motion.div>
-
-          {/* Grid 2x2 */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {[
-              {
-                n: "01",
-                t: "Sua Marca em Primeiro Lugar",
-                tag: "White Label",
-                d: "Aplicativo e painel web customizados com as cores, logotipo e nome da sua empresa na App Store e Google Play. Para o mercado, a tecnologia é sua.",
-              },
-              {
-                n: "02",
-                t: "Faturamento Sob Demanda",
-                tag: "Pay-per-use",
-                d: "Pague exclusivamente pelas licenças ativas no mês. Sem pacotes mínimos obrigatórios, sem taxas escondidas e sem cobranças ociosas.",
-              },
-              {
-                n: "03",
-                t: "Fidelidade Zero",
-                tag: "Liberdade total",
-                d: "Acreditamos na qualidade e na estabilidade da nossa plataforma. Você tem total liberdade comercial, sem contratos de permanência forçada ou multas de rescisão.",
-              },
-              {
-                n: "04",
-                t: "Suporte Técnico Especializado",
-                tag: "Atendimento humano",
-                d: "Atendimento humanizado e ágil, focado em resolver problemas críticos em tempo real. Sem robôs, sem respostas automáticas e sem burocracia.",
-              },
-            ].map((card, i) => (
-              <motion.div
-                key={card.n}
-                initial={{ opacity: 0, y: 28 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: i * 0.12, ease: "easeOut" }}
-                className="group relative p-7 rounded-2xl border border-primary-glow/20 bg-card/30 backdrop-blur-sm hover:border-primary-glow/50 hover:bg-card/50 transition-all duration-300"
-              >
-                {/* Número decorativo */}
-                <div className="font-mono text-5xl font-black text-gradient-primary opacity-80 absolute top-5 right-6 select-none">
-                  {card.n}
-                </div>
-
-                {/* Tag */}
-                <span className="inline-block text-[10px] font-bold uppercase tracking-[0.25em] text-primary-glow/70 border border-primary-glow/30 rounded-full px-3 py-1 mb-4">
-                  {card.tag}
-                </span>
-
-                {/* Título */}
-                <h3 className="text-lg font-bold mb-3 leading-snug">
-                  {card.t}
-                </h3>
-
-                {/* Descrição */}
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {card.d}
-                </p>
-
-                {/* Linha decorativa hover */}
-                <div className="absolute bottom-0 left-6 right-6 h-px bg-gradient-to-r from-primary-glow/0 via-primary-glow/40 to-primary-glow/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </motion.div>
-            ))}
-          </div>
-
-        </div>
-      </section>
-
-      {/* STATS / INTEGRAÇÕES */}
-      <section className="relative border-y border-primary-glow/20 bg-card/20 backdrop-blur-xl overflow-hidden py-16">
-
-        {/* Cabeçalho */}
-        <div className="max-w-3xl mx-auto text-center mb-12 px-6">
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <span className="h-px w-12 bg-primary-glow/40" />
-            <span className="text-[11px] uppercase tracking-[0.3em] text-primary-glow/70 font-mono">
-              Integrações
-            </span>
-            <span className="h-px w-12 bg-primary-glow/40" />
-          </div>
-
-          <h2 className="text-2xl md:text-3xl font-semibold text-foreground leading-snug mb-4">
-            Tecnologia compatível com o que você{" "}
-            <span className="text-primary-glow">já usa em campo.</span>
-          </h2>
-
-          <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-            Esqueça travas de hardware. Nossa plataforma possui integrações nativas com os principais
-            fabricantes de hardware de reconhecimento facial, biometria, leitura de placas (LPR),
-            tags e dispositivos IoT do mundo.
-          </p>
-        </div>
-
-        {/* Carrossel */}
-        <div className="max-w-5xl mx-auto overflow-hidden" id="integracoes-mask">
-          <div id="integracoes-track">
-            {doubled.map((logo, i) => (
-              <div key={i} className="flex items-center justify-center px-10 py-4">
-                <img
-                  src={logo.src}
-                  alt={logo.alt}
-                  className="h-16 w-auto object-contain transition-all duration-300"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-
-      </section>
-
-
-
       <section id="features" className="relative py-24 md:py-32 overflow-hidden">
         <div className="absolute top-10 left-1/3 w-80 h-80 bg-primary/10 rounded-full blur-[110px]" />
         <div className="absolute bottom-10 right-1/3 w-96 h-96 bg-primary-glow/10 rounded-full blur-[110px]" />
@@ -495,7 +369,7 @@ function Landing() {
             </div>
             <h2 className="text-4xl md:text-5xl font-black leading-tight tracking-tighter">
               <span className="text-foreground">Recursos avançados para gerenciar qualquer condomínio com </span>
-              <span className="bg-gradient-to-r from-secondary via-secondary to-secondary bg-clip-text text-transparent">
+              <span className="text-secondary">
                 facilidade
               </span>
               <span className="text-foreground">.</span>
@@ -517,10 +391,10 @@ function Landing() {
                   {String(i + 1).padStart(3, "0")}
                 </div>
                 <div className="relative h-12 w-12 rounded-xl bg-primary/15 border border-primary-glow/40 grid place-items-center mb-5 group-hover:bg-[var(--gradient-primary)] group-hover:border-transparent transition shadow-[var(--shadow-hud)]">
-                  <f.icon className="h-5 w-5 text-primary-glow group-hover:text-primary-foreground transition" />
+                  <f.icon className="h-5 w-5 group-hover:text-primary-foreground transition" />
                 </div>
-                <h3 className="text-lg font-bold mb-2">{f.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{f.desc}</p>
+                <h3 className="text-xl font-bold mb-2">{f.title}</h3>
+                <p className="text-lg text-muted-foreground leading-relaxed">{f.desc}</p>
                 <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-primary-glow/40 to-transparent opacity-0 group-hover:opacity-100 transition" />
               </motion.div>
             ))}
@@ -553,6 +427,49 @@ function Landing() {
 
         </div>
       </section>
+
+            {/* STATS / INTEGRAÇÕES */}
+      <section className="relative border-y border-primary-glow/20 bg-card/20 backdrop-blur-xl overflow-hidden py-16">
+
+        {/* Cabeçalho */}
+        <div className="max-w-3xl mx-auto text-center mb-12 px-6">
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <span className="h-px w-12 bg-primary-glow/40" />
+            <span className="text-[18px] uppercase tracking-[0.3em] text-primary-glow/70 font-mono">
+              Integrações
+            </span>
+            <span className="h-px w-12 bg-primary-glow/40" />
+          </div>
+
+          <h2 className="text-2xl md:text-4xl font-semibold text-foreground leading-snug mb-4">
+            Tecnologia compatível com o que você{" "}
+            <span className="text-primary-glow">já usa em campo.</span>
+          </h2>
+
+          <p className="text-sm md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+            Esqueça travas de hardware. Nossa plataforma possui integrações nativas com os principais
+            fabricantes de hardware de reconhecimento facial, biometria, leitura de placas (LPR),
+            tags e dispositivos IoT do mundo.
+          </p>
+        </div>
+
+        {/* Carrossel */}
+        <div className="max-w-5xl mx-auto overflow-hidden" id="integracoes-mask">
+          <div id="integracoes-track">
+            {doubled.map((logo, i) => (
+              <div key={i} className="flex items-center justify-center px-10 py-4">
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  className="h-16 w-auto object-contain transition-all duration-300"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </section>
+
 
       {/* APLICAÇÃO */}
       <section id="features" className="relative py-24 md:py-32 overflow-hidden">
@@ -620,10 +537,10 @@ function Landing() {
                       {String(i + 1).padStart(2, "0")}
                     </div>
                     <div>
-                      <h4 className="font-bold text-sm mb-1 group-hover:text-secondary-glow transition-colors duration-200">
+                      <h4 className="font-bold text-lg mb-1 group-hover:text-secondary-glow transition-colors duration-200">
                         {item.t}
                       </h4>
-                      <p className="text-xs text-muted-foreground leading-relaxed">{item.d}</p>
+                      <p className="text-lg text-muted-foreground leading-relaxed">{item.d}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -681,14 +598,14 @@ function Landing() {
                     transition={{ duration: 0.5, delay: i * 0.08, ease: "easeOut" }}
                     className="flex items-start gap-3 p-3.5 rounded-2xl border border-transparent hover:border-primary-glow/25 hover:bg-card/30 transition-all duration-300 group"
                   >
-                    <div className="h-8 w-8 rounded-lg bg-primary/15 border border-primary-glow/30 grid place-items-center shrink-0 group-hover:bg-primary/25 transition">
-                      <item.icon className="h-4 w-4 text-primary-glow" />
+                    <div className="h-10 w-10 rounded-lg bg-primary/15 border border-primary-glow/30 grid place-items-center shrink-0 group-hover:bg-primary/25 transition">
+                      <item.icon className="h-6 w-6 " />
                     </div>
                     <div>
-                      <h4 className="font-bold text-sm mb-0.5 group-hover:text-primary-glow transition-colors duration-200">
+                      <h4 className="font-bold text-lg mb-0.5 group-hover:text-primary-glow transition-colors duration-200">
                         {item.t}
                       </h4>
-                      <p className="text-xs text-muted-foreground leading-relaxed">{item.d}</p>
+                      <p className="text-lg text-muted-foreground leading-relaxed">{item.d}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -721,6 +638,128 @@ function Landing() {
 
         </div>
       </section >
+
+            {/* HOW IT WORKS */}
+      <section id="how" className="py-18 lg:py-32 relative">
+        <div className="max-w-7xl mx-auto px-6">
+
+          {/* Cabeçalho */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.9, ease: "easeOut" }}
+            className="max-w-3xl mb-16"
+          >
+            <div className="inline-flex items-center gap-2 text-xs font-bold text-primary-glow uppercase tracking-[0.3em] mb-4">
+              <span className="h-px w-8 bg-primary-glow" /> Diferenciais
+            </div>
+            <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-6">
+              Por que os integradores <br />
+              <span className="text-gradient-primary">escolhem a nossa plataforma?</span>
+            </h2>
+            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+              Elimine custos fixos e tenha total liberdade para escalar seu negócio com a nossa tecnologia.
+            </p>
+          </motion.div>
+
+          {/* Grid 2x2 */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {[
+              {
+                n: "01",
+                t: "Sua Marca em Primeiro Lugar",
+                tag: "White Label",
+                d: "Aplicativo e painel web customizados com as cores, logotipo e nome da sua empresa na App Store e Google Play. Para o mercado, a tecnologia é sua.",
+              },
+              {
+                n: "02",
+                t: "Faturamento Sob Demanda",
+                tag: "Pay-per-use",
+                d: "Pague exclusivamente pelas licenças ativas no mês. Sem pacotes mínimos obrigatórios, sem taxas escondidas e sem cobranças ociosas.",
+              },
+              {
+                n: "03",
+                t: "Fidelidade Zero",
+                tag: "Liberdade total",
+                d: "Acreditamos na qualidade e na estabilidade da nossa plataforma. Você tem total liberdade comercial, sem contratos de permanência forçada ou multas de rescisão.",
+              },
+              {
+                n: "04",
+                t: "Suporte Técnico Especializado",
+                tag: "Atendimento humano",
+                d: "Atendimento humanizado e ágil, focado em resolver problemas críticos em tempo real. Sem robôs, sem respostas automáticas e sem burocracia.",
+              },
+            ].map((card, i) => (
+              <motion.div
+                key={card.n}
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: i * 0.12, ease: "easeOut" }}
+                className="group relative p-7 rounded-2xl border border-primary-glow/20 bg-card/30 backdrop-blur-sm hover:border-primary-glow/50 hover:bg-card/50 transition-all duration-300"
+              >
+                {/* Número decorativo */}
+                <div className="font-mono text-4xl font-black text-gradient-primary opacity-80 absolute top-5 right-6 select-none">
+                  {card.n}
+                </div>
+
+                {/* Tag */}
+                <span className="inline-block text-[10px] font-bold uppercase tracking-[0.25em] text-primary-glow/70 border border-primary-glow/30 rounded-full px-3 py-1 mb-4">
+                  {card.tag}
+                </span>
+
+                {/* Título */}
+                <h3 className="text-lg font-bold mb-3 leading-snug">
+                  {card.t}
+                </h3>
+
+                {/* Descrição */}
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  {card.d}
+                </p>
+
+                {/* Linha decorativa hover */}
+                <div className="absolute bottom-0 left-6 right-6 h-px bg-gradient-to-r from-primary-glow/0 via-primary-glow/40 to-primary-glow/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </motion.div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+
+            {/* PREVIEW */}
+      <section id="preview" className="py-12 lg:py-28 relative overflow-hidden">
+        <div className="absolute top-10 left-1/3 w-80 h-80 bg-primary/10 rounded-full blur-[110px]" />
+        <div className="absolute bottom-10 right-1/3 w-96 h-96 bg-primary-glow/10 rounded-full blur-[110px]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.08),transparent_45%),radial-gradient(circle_at_80%_60%,rgba(147,51,234,0.08),transparent_45%)]" />
+        <div className="py-10 flex flex-col lg:flex-row items-center justify-center gap-8 max-w-7xl mx-auto px-6">
+          <div className="max-w-[1100px] w-full flex flex-col gap-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
+              SINTAC — {" "}
+              <span
+                className="text-gradient-primary"
+              >
+                Acesso Total.
+              </span>
+              <br />
+              Controle Absoluto
+            </h1>
+            <p className="text-muted-foreground text-lg leading-relaxed">
+              Desenvolvemos uma solução robusta, escalável e de rápida implantação, projetada especificamente para empresas de segurança eletrônica, facilities e controle de acesso.Nós cuidamos da evolução tecnológica, da estabilidade dos servidores e das atualizações de segurança, enquanto você lidera o mercado local com uma solução de alto valor agregado. Entregue uma central de comando de bolso para o seu cliente: abra portões, autorize visitantes e monitore acessos com total mobilidade e precisão.
+            </p>
+          </div>
+          <div className="flex-shrink-0 lg:translate-x-16 max-w-[650px] w-full lg:w-auto">
+            <img
+              src={system}
+              alt="Sistema Sintac"
+              className="w-full lg:max-w-[700px] rounded-xl"
+            />
+          </div>
+        </div>
+      </section>
+
 
       {/* FAQ */}
       < section id="faq" className="relative py-24 px-4 overflow-hidden" >
@@ -800,27 +839,8 @@ function Landing() {
         </div >
       </section >
 
-      {/* FOOTER */}
-      < footer className="border-t border-primary-glow/20 py-10 backdrop-blur-xl bg-background/40" >
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-muted-foreground uppercase tracking-widest">
-          <div className="flex items-center gap-2.5">
-            <h3>O software é SEU. Nós somos o motor invisível que faz a sua empresa de segurança crescer.</h3>
-          </div>
-          <p className="text-center text-sm text-[var(--muted-foreground)]">
-            Ainda tem dúvidas?{" "}
-            <a
-              href="https://wa.me/5534992318655"
-              target="_blank"
-              className="font-semibold underline underline-offset-4 transition-colors duration-200"
-              style={{ color: "var(--brand-wine-light)" }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent)")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--brand-wine-light)")}
-            >
-              Fale com um especialista
-            </a>
-          </p>
-        </div>
-      </footer >
+        {/* FOOTER */}
+      <Footer />
 
       <WhatsAppFloat
         phoneNumber="5534992318655"
