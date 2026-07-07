@@ -127,7 +127,7 @@ function FAQRow({ item, index, isOpen, onToggle }: FAQRowProps) {
       >
         <span
           className={[
-            "shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold mt-0.5 transition-colors duration-300",
+            "shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-lg font-bold mt-0.5 transition-colors duration-300",
             isOpen
               ? "bg-[var(--secondary)] text-[var(--secondary-foreground)]"
               : "bg-[var(--secondary)]/20 text-[var(--muted-foreground)] group-hover:bg-[var(--secondary)]/40",
@@ -138,7 +138,7 @@ function FAQRow({ item, index, isOpen, onToggle }: FAQRowProps) {
 
         <span
           className={[
-            "flex-1 text-base font-medium leading-snug transition-colors duration-200",
+            "flex-1 text-lg font-medium leading-snug transition-colors duration-200",
             isOpen
               ? "text-[var(--foreground)]"
               : "text-[var(--muted-foreground)] group-hover:text-[var(--foreground)]",
@@ -446,7 +446,7 @@ function Landing() {
             <span className="text-primary-glow">já usa em campo.</span>
           </h2>
 
-          <p className="text-sm md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
             Esqueça travas de hardware. Nossa plataforma possui integrações nativas com os principais
             fabricantes de hardware de reconhecimento facial, biometria, leitura de placas (LPR),
             tags e dispositivos IoT do mundo.
@@ -746,7 +746,7 @@ function Landing() {
               <br />
               Controle Absoluto
             </h1>
-            <p className="text-muted-foreground text-lg leading-relaxed">
+            <p className="text-muted-foreground text-xl leading-relaxed">
               Desenvolvemos uma solução robusta, escalável e de rápida implantação, projetada especificamente para empresas de segurança eletrônica, facilities e controle de acesso.Nós cuidamos da evolução tecnológica, da estabilidade dos servidores e das atualizações de segurança, enquanto você lidera o mercado local com uma solução de alto valor agregado. Entregue uma central de comando de bolso para o seu cliente: abra portões, autorize visitantes e monitore acessos com total mobilidade e precisão.
             </p>
           </div>
