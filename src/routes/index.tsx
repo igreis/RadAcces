@@ -214,7 +214,7 @@ function Landing() {
         <div className="max-w-7xl mx-auto rounded-2xl backdrop-blur-2xl bg-background/40 border border-primary/20 hud-corners shadow-[var(--shadow-hud)]">
           <div className="px-6 h-14 flex items-center justify-between">
             <div className="flex items-center gap-2.5">
-              <div className="flex flex-col leading-none max-w-[160px]">
+              <div className="flex flex-col leading-none max-w-[160px] mr-4">
                 <a href="#hero">
                   <img src={logo} />
                 </a>
@@ -228,7 +228,7 @@ function Landing() {
               <a href="#faq" className="hover:text-primary-glow transition">FAQ</a>
             </nav>
             <a  href="https://wa.me/5534992318655"
-              target="_blank" className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider px-4 py-2 rounded-full bg-[var(--gradient-primary)] text-primary-foreground hover:scale-105 transition-transform shadow-[var(--shadow-glow)]">
+              target="_blank" className=" inline-flex items-center gap-1.5 whitespace-nowrap text-xs font-bold uppercase tracking-wider px-2 sm:px-4 py-2 rounded-full bg-[var(--gradient-primary)] text-primary-foreground hover:scale-105 transition-transform shadow-[var(--shadow-glow)]">
               Seja nosso parceiro <ArrowRight className="h-3.5 w-3.5" />
             </a>
           </div>
@@ -300,7 +300,7 @@ function Landing() {
             </div>
            <div className="grid grid-cols-3 gap-8 smpt-10 max-w-3xl mx-auto lg:mx-0 mt-12">
               <div className="space-y-2">
-                <div className="text-4xl font-bold bg-gradient-to-br from-primary to-secondary bg-clip-text text-transparent">
+                <div className="text-4xl font-bold text-primary">
                 
                     <CountUp end={100} duration={5} />
                 
@@ -308,21 +308,21 @@ function Landing() {
                   
                   <span>+</span>
                 </div>
-                <div className="text-sm text-muted-foreground">Projetos Entregues</div>
+                <div className="text-sm text-muted-foreground">Clientes</div>
               </div>
               <div className="space-y-2">
-                <div className="text-4xl font-bold bg-gradient-to-br from-primary to-secondary bg-clip-text text-transparent">
+                <div className="text-4xl font-bold text-primary">
                 
-                    <CountUp end={50} duration={5} />
+                    <CountUp end={5} duration={5} />
                
-                    <span>0</span>
+                    
                  
                   <span>+</span>
                 </div>
-                <div className="text-sm text-muted-foreground">Clientes Satisfeitos</div>
+                <div className="text-sm text-muted-foreground">Anos de serviço</div>
               </div>
               <div className="space-y-2">
-                <div className="text-4xl font-bold bg-gradient-to-br from-primary to-secondary bg-clip-text text-transparent">
+                <div className="text-4xl font-bold text-primary">
                  
                     <CountUp end={5} duration={5} />
                  
@@ -330,7 +330,7 @@ function Landing() {
                 
                   <span>+</span>
                 </div>
-                <div className="text-sm text-muted-foreground">Anos de Experiência</div>
+                <div className="text-sm text-muted-foreground">Localidades</div>
               </div>
             </div>
           </motion.div>
