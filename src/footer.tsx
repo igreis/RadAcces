@@ -111,7 +111,7 @@ const Footer = () => {
                 <div className="pt-8 border-t border-primary/10">
                     <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
                         <p>
-                            © {currentYear} FR Sistemas. Todos os direitos reservados.
+                            © {currentYear} Sintac. Todos os direitos reservados.
                         </p>
                         <div className="flex items-center gap-6">
                             <a href="#" className="hover:text-primary transition-colors">
