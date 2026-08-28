@@ -1,5 +1,4 @@
-import { FaGithub, FaLinkedin, FaTwitter, FaInstagram } from "react-icons/fa6";
-import { Code2 } from "lucide-react";
+import { FaFacebook, FaLinkedin, FaInstagram } from "react-icons/fa6";
 import logo from '../src/assets/logo.png';
 
 const Footer = () => {
@@ -81,25 +80,25 @@ const Footer = () => {
                         <h3 className="font-semibold text-foreground">Redes Sociais</h3>
                         <div className="flex items-center gap-3">
                             <a
-                                href="#"
-                                className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center hover:bg-primary/20 hover:border-primary/40 transition-all"
-                            >
-                                <FaGithub className="w-5 h-5 text-primary" />
-                            </a>
-                            <a
-                                href="#"
+                                href="https://www.linkedin.com/company/m3uzz/"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center hover:bg-primary/20 hover:border-primary/40 transition-all"
                             >
                                 <FaLinkedin className="w-5 h-5 text-primary" />
                             </a>
                             <a
-                                href="#"
+                                href="https://www.facebook.com/share/1BvhSvyaGd/?mibextid=wwXIfr"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center hover:bg-primary/20 hover:border-primary/40 transition-all"
                             >
-                                <FaTwitter className="w-5 h-5 text-primary" />
+                                <FaFacebook className="w-5 h-5 text-primary" />
                             </a>
                             <a
-                                href="#"
+                                href="https://www.instagram.com/m3_sintac?igsi=MTZrMWl1bGUxMWtiMg=="
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center hover:bg-primary/20 hover:border-primary/40 transition-all"
                             >
                                 <FaInstagram className="w-5 h-5 text-primary" />

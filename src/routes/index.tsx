@@ -1,8 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import {
-  Shield, Smartphone, Users, Bell, KeyRound, Mail, Calendar,
-  CheckCircle2, Lock, Zap, ArrowRight, Radar, Fingerprint, Plus, Briefcase, Truck, LayoutGrid, GraduationCap, Building2, Link, Phone, QrCode, BarChart3, Camera, Wifi, ClipboardList
+  Shield, Users, KeyRound, Calendar, Zap, ArrowRight, Radar, Plus,
+  Briefcase, Truck, LayoutGrid, GraduationCap, Building2, Phone, BarChart3,
+  Camera, Brain, MessageSquare, Package, Ticket
 } from "lucide-react";
 import screenLogin from "@/assets/login.png";
 import screenHome from "@/assets/home.png";
@@ -35,21 +36,17 @@ export const Route = createFileRoute("/")({
 });
 
 const features = [
-  { icon: Link, title: "Convite Facial por Link", desc: "Envie um link de convite que captura o rosto do visitante antes da chegada. Entrada autorizada sem contato humano no posto." },
-  { icon: Phone, title: "Chamadas VoIP", desc: "Comunicação em tempo real entre portaria, moradores e visitantes direto pelo app, sem custo de telefonia." },
-  { icon: QrCode, title: "QR Code Dinâmico", desc: "Códigos de acesso gerados com validade configurável, uso único ou recorrente. Sem impressão, sem reaproveitamento indevido" },
-  { icon: BarChart3, title: "Relatórios em Tempo Real", desc: "Dashboard completo com fluxo de entradas, ocorrências, tempo médio de triagem e auditoria exportável." },
-  { icon: Camera, title: "Reconhecimento Facial", desc: "Identificação biométrica integrada a câmeras e controladores de acesso dos principais fabricantes do mercado." },
-  { icon: KeyRound, title: "Abertura Remota de Portões", desc: "Libere cancelas, portas e catracas com um toque, de qualquer lugar, com log de ação registrado automaticamente." },
-  { icon: Users, title: "Gestão de Visitantes", desc: "Cadastre e gerencie familiares, prestadores e recorrentes com permissões granulares por horário e setor." },
-  { icon: Bell, title: "Notificações de Correspondência", desc: "Aviso instantâneo ao morador quando uma encomenda chega ao posto, com foto e confirmação de retirada." },
-  { icon: Calendar, title: "Agenda e Reservas", desc: "Controle de áreas comuns, eventos internos e comunicados em tempo real para toda a unidade." },
-  { icon: Shield, title: "Registro Seguro e Auditoria", desc: "Histórico imutável de acessos com autenticação em dois fatores e criptografia ponta a ponta." },
-  { icon: Wifi, title: "Integração IoT", desc: "Compatível com leitores de tag, biometria, LPR e dispositivos IoT dos principais fabricantes globais." },
-  { icon: Lock, title: "Controle de Setores Restritos", desc: "Defina zonas de acesso por perfil, horário e credencial. Ideal para industriais, docas e áreas técnicas." },
-  { icon: ClipboardList, title: "Pré-cadastro de Prestadores", desc: "Fluxo digital de autorização prévia para obras, manutenções e entregas, com validade programada." },
-  { icon: Zap, title: "Automação de Fluxo", desc: "Regras automáticas de liberação por reconhecimento, placa ou tag, sem intervenção do operador." },
-  { icon: Mail, title: "Convites Digitais", desc: "Envie convites com QR code, data e validade configurável. Rastreie confirmações e acessos em tempo real." },
+  { icon: Users, title: "Gestão de moradores, visitantes e prestadores de serviço", desc: "Cadastre, organize e gerencie todos os acessos com praticidade. Autorize acessos, defina permissões e acompanhe permanências." },
+  { icon: Camera, title: "Monitoramento inteligente", desc: "Acompanhe tudo que acontece no seu condomínio em tempo real de qualquer lugar. Alertas instantâneos, imagens ao vivo e histórico completo." },
+  { icon: KeyRound, title: "Controle de acesso", desc: "Abertura de portões remota, convites para visitantes online, histórico de registro de entradas e saídas. Alerta de chegada e saída de visitantes." },
+  { icon: Calendar, title: "Reserva de áreas", desc: "Controle de áreas comuns, eventos internos e comunicados em tempo real para toda a unidade." },
+  { icon: Ticket, title: "Gestão de chamados", desc: "Fluxo de atendimento automatizado, acompanhe prazo de SLA e todas as etapas para garantir mais eficiência e transparência na gestão do condomínio." },
+  { icon: Phone, title: "Chamadas VoIP", desc: "Sua portaria na palma da mão, receba chamadas, visualize o visitante em tempo real e libere acessos diretamente pelo aplicativo." },
+  { icon: Package, title: "Correspondência integrada", desc: "Registro automático de todas as etapas da entrega, incluindo evidências visuais, da entrada e da retirada da encomenda com notificações imediatas." },
+  { icon: Shield, title: "Controle de setores restritos", desc: "Defina zonas de acesso por perfil, horário e credencial." },
+  { icon: BarChart3, title: "Relatórios em tempo real", desc: "Dashboard completo com fluxo de entradas, ocorrências, tempo médio de triagem e auditorias exportáveis." },
+  { icon: MessageSquare, title: "Comunicação integrada em múltiplos canais", desc: "Push, e-mail, SMS, WhatsApp e mural do app." },
+  { icon: Brain, title: "IA preventiva", desc: "Identificação de comportamentos fora do padrão, com alertas automáticos." },
 ];
 
 // ---------------------------------------------------------------------------
@@ -90,12 +87,12 @@ const faqs: FAQItem[] = [
   {
     question: "Como a plataforma lida com a LGPD e a segurança dos dados?",
     answer:
-      "oda a nossa infraestrutura está hospedada na AWS (Amazon Web Services) com servidores no Brasil. Os dados são criptografados de ponta a ponta e operam em total conformidade com as exigências da Lei Geral de Proteção de Dados (LGPD).",
+      "Toda a nossa infraestrutura está hospedada em data center próprio com backup na AWS.",
   },
   {
     question: "Como funciona o suporte técnico para o integrador?",
     answer:
-      "Oferecemos suporte técnico especializado e humanizado focado na sua equipe de TI e operação. Sem robôs ou respostas automáticas quando você precisa resolver cenários críticos em tempo real.",
+      "Oferecemos treinamento para as equipes, para que as equipes possam operar com facilidade e autonomia.",
   },
 ];
 
@@ -192,7 +189,6 @@ function Landing() {
   ];
 
   const doubled = [...logos, ...logos, ...logos, ...logos];
-
   const [showAll, setShowAll] = useState(false);
   const visibleFeatures = showAll ? features : features.slice(0, 6);
 
@@ -210,25 +206,27 @@ function Landing() {
       />
 
       {/* NAV */}
-      <header className="fixed top-4 inset-x-0 z-50 px-4">
+      <header className="fixed top-4 inset-x-0 z-50 px-3 sm:px-4">
         <div className="max-w-7xl mx-auto rounded-2xl backdrop-blur-2xl bg-background/40 border border-primary/20 hud-corners shadow-[var(--shadow-hud)]">
-          <div className="px-6 h-14 flex items-center justify-between">
+          <div className="px-3 sm:px-6 h-14 flex items-center justify-between gap-2">
             <div className="flex items-center gap-2.5">
-              <div className="flex flex-col leading-none max-w-[160px] mr-4">
+              <div className="flex flex-col leading-none max-w-[120px] sm:max-w-[160px] sm:mr-4">
                 <a href="#hero">
                   <img src={logo} />
                 </a>
                 
               </div>
             </div>
-            <nav className="hidden md:flex items-center gap-8 text-xs font-medium text-muted-foreground tracking-wide uppercase">
-              <a href="#features" className="hover:text-primary-glow transition">Sistemas</a>
-              <a href="#preview" className="hover:text-primary-glow transition">Interface</a>
-              <a href="#how" className="hover:text-primary-glow transition">Protocolo</a>
+            <nav className="hidden lg:flex items-center gap-3 xl:gap-8 text-[10px] xl:text-xs font-medium text-muted-foreground tracking-wide uppercase whitespace-nowrap">
+              <a href="#features" className="hover:text-primary-glow transition">Funcionalidades</a>
+              <a href="#integracoes" className="hover:text-primary-glow transition">Integrações</a>
+              <a href="#publico" className="hover:text-primary-glow transition">Público</a>
+              <a href="#how" className="hover:text-primary-glow transition">Diferenciais</a>
+              <a href="#preview" className="hover:text-primary-glow transition">Sobre nós</a>
               <a href="#faq" className="hover:text-primary-glow transition">FAQ</a>
             </nav>
             <a  href="https://wa.me/5534992318655"
-              target="_blank" className=" inline-flex items-center gap-1.5 whitespace-nowrap text-xs font-bold uppercase tracking-wider px-2 sm:px-4 py-2 rounded-full bg-[var(--gradient-primary)] text-primary-foreground hover:scale-105 transition-transform shadow-[var(--shadow-glow)]">
+              target="_blank" className="inline-flex items-center gap-1.5 whitespace-nowrap text-[10px] sm:text-xs font-bold uppercase tracking-wider px-2 sm:px-4 py-2 rounded-full bg-[var(--gradient-primary)] text-primary-foreground hover:scale-105 transition-transform shadow-[var(--shadow-glow)]">
               Seja nosso parceiro <ArrowRight className="h-3.5 w-3.5" />
             </a>
           </div>
@@ -236,7 +234,7 @@ function Landing() {
       </header>
 
       {/* HERO */}
-      <section className="relative pt-36 pb-28 overflow-hidden" style={{ background: "var(--gradient-hero)" }} id="hero">
+      <section className="relative pt-28 sm:pt-36 pb-16 sm:pb-28 overflow-hidden" style={{ background: "var(--gradient-hero)" }} id="hero">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute inset-x-0 h-px bg-gradient-to-r from-transparent via-primary-glow to-transparent animate-hud-scan opacity-70" />
         </div>
@@ -248,14 +246,14 @@ function Landing() {
         <div className="absolute top-20 -left-20 h-96 w-96 rounded-full bg-primary/40 blur-[140px]" />
         <div className="absolute bottom-0 right-0 h-[28rem] w-[28rem] rounded-full bg-accent/30 blur-[140px]" />
 
-        <div className="relative max-w-7xl mx-auto px-6 flex flex-col lg:grid lg:grid-cols-12 gap-12 items-center">
+        <div className="relative max-w-7xl mx-auto px-6 flex flex-col xl:grid xl:grid-cols-12 gap-6 sm:gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="lg:col-span-7"
+            className="xl:col-span-7"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/15 border border-primary-glow/40 text-[11px] font-semibold text-primary-glow mb-6 backdrop-blur-md tracking-[0.2em] uppercase shadow-[var(--shadow-hud)]">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/15 border border-primary-glow/40 text-[11px] font-semibold text-primary-glow mb-4 backdrop-blur-md tracking-[0.2em] uppercase shadow-[var(--shadow-hud)]">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-glow opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary-glow" />
@@ -272,7 +270,7 @@ function Landing() {
             <h3
               className="text-4xl sm:text-5xl font-black tracking-tighter text-[var(--foreground)] mb-4"
             >
-              Potencialize sua empresa de segurança com a plataforma de{" "}
+              Software de
               <span
                 className="bg-clip-text text-transparent"
                 style={{
@@ -280,7 +278,7 @@ function Landing() {
                     "linear-gradient(135deg, var(--brand-wine-light), var(--accent), var(--brand-wine-light))",
                 }}
               >
-                Controle de Acesso mais completa do mercado.
+                <span className="block text-gradient-primary">Controle de Acesso.</span>
               </span>
             </h3>
 
@@ -298,39 +296,34 @@ function Landing() {
                 <Radar className="h-4 w-4 text-primary-glow" /> Falar com um Especialista
               </a>
             </div>
-           <div className="grid grid-cols-3 gap-8 smpt-10 max-w-3xl mx-auto lg:mx-0 mt-12">
-              <div className="space-y-2">
-                <div className="text-4xl font-bold text-primary">
+           <div className="grid grid-cols-3 gap-2 sm:gap-8 pt-10 max-w-3xl mx-auto lg:mx-0 mt-12 text-center lg:text-left">
+              <div className="min-w-0 space-y-2">
+                <div className="whitespace-nowrap text-3xl sm:text-4xl font-bold text-primary">
                 
-                    <CountUp end={100} duration={5} />
+                    <CountUp end={67} duration={5} />
                 
-                    <span>0</span>
+                    <span>K</span>
                   
                   <span>+</span>
                 </div>
-                <div className="text-sm text-muted-foreground">Clientes</div>
+                <div className="text-xs sm:text-sm text-muted-foreground">Clientes</div>
               </div>
-              <div className="space-y-2">
-                <div className="text-4xl font-bold text-primary">
+              <div className="min-w-0 space-y-2">
+                <div className="whitespace-nowrap text-3xl sm:text-4xl font-bold text-primary">
                 
-                    <CountUp end={5} duration={5} />
-               
-                    
+                    <CountUp end={10} duration={5} />
                  
-                  <span>+</span>
                 </div>
-                <div className="text-sm text-muted-foreground">Anos de serviço</div>
+                <div className="text-xs sm:text-sm text-muted-foreground">Anos de serviço</div>
               </div>
-              <div className="space-y-2">
-                <div className="text-4xl font-bold text-primary">
+              <div className="min-w-0 space-y-2">
+                <div className="whitespace-nowrap text-3xl sm:text-4xl font-bold text-primary">
                  
-                    <CountUp end={5} duration={5} />
-                 
-                    <span>0</span>
+                    <CountUp end={11} duration={5} />
                 
                   <span>+</span>
                 </div>
-                <div className="text-sm text-muted-foreground">Localidades</div>
+                <div className="text-xs sm:text-sm text-muted-foreground">Localidades</div>
               </div>
             </div>
           </motion.div>
@@ -339,9 +332,9 @@ function Landing() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.2 }}
-            className="lg:col-span-5 relative"
+            className="xl:col-span-5 relative w-full"
           >
-            <div className="relative mx-auto w-[500px] md:w-[700px] h-[700px] rounded-full">
+            <div className="relative max-xl:left-1/2 max-xl:-translate-x-1/2 xl:mx-auto w-[500px] md:w-[700px] h-[700px] rounded-full">
               <div className="absolute -inset-16 bg-primary/40 blur-3xl rounded-full animate-hud-pulse" />
               <div className="absolute -inset-12 rounded-full border border-primary-glow/30 animate-hud-rotate" style={{ animationDuration: "20s" }}>
                 <Plus className="absolute -top-2 left-1/2 -translate-x-1/2 h-4 w-4 text-primary-glow" />
@@ -400,7 +393,6 @@ function Landing() {
             ))}
           </div>
 
-          {/* Botão mostrar mais */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -419,17 +411,16 @@ function Landing() {
               className="group inline-flex items-center gap-2 px-6 py-3 rounded-2xl border border-primary-glow/30 bg-black/20 backdrop-blur-sm text-sm font-medium text-primary-glow hover:border-primary-glow/60 hover:bg-card/40 transition-all duration-200"
             >
               {showAll ? "Mostrar menos" : "Mostrar todas as funcionalidades"}
-              <span className={`transition-transform duration-300 ${showAll ? "rotate-180" : ""}`}>
-                ↓
-              </span>
+              <span className={`transition-transform duration-300 ${showAll ? "rotate-180" : ""}`}>↓</span>
             </button>
+            <p className="text-xl font-bold text-primary-glow uppercase tracking-wider">E MUITO MAIS!</p>
           </motion.div>
 
         </div>
       </section>
 
             {/* STATS / INTEGRAÇÕES */}
-      <section className="relative border-y border-primary-glow/20 bg-card/20 backdrop-blur-xl overflow-hidden py-16">
+      <section id="integracoes" className="relative border-y border-primary-glow/20 bg-card/20 backdrop-blur-xl overflow-hidden py-16">
 
         {/* Cabeçalho */}
         <div className="max-w-3xl mx-auto text-center mb-12 px-6">
@@ -447,7 +438,7 @@ function Landing() {
           </h2>
 
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-            Esqueça travas de hardware. Nossa plataforma possui integrações nativas com os principais
+            Nossa plataforma possui integrações nativas com os principais
             fabricantes de hardware de reconhecimento facial, biometria, leitura de placas (LPR),
             tags e dispositivos IoT do mundo.
           </p>
@@ -472,7 +463,7 @@ function Landing() {
 
 
       {/* APLICAÇÃO */}
-      <section id="features" className="relative py-24 md:py-32 overflow-hidden">
+      <section id="publico" className="relative py-24 md:py-32 overflow-hidden">
         <div className="absolute top-10 left-1/3 w-80 h-80 bg-primary/10 rounded-full blur-[110px]" />
         <div className="absolute bottom-10 right-1/3 w-96 h-96 bg-primary-glow/10 rounded-full blur-[110px]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.08),transparent_45%),radial-gradient(circle_at_80%_60%,rgba(147,51,234,0.08),transparent_45%)]" />
@@ -485,11 +476,7 @@ function Landing() {
               <span className="text-sm text-primary-glow font-medium uppercase tracking-wider">• Para quem •</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-black leading-tight tracking-tighter">
-              <span className="text-foreground">Para quem foi feito e onde </span>
-              <span className="bg-gradient-to-r from-secondary via-secondary to-secondary bg-clip-text text-transparent">
-                aplicar
-              </span>
-              <span className="text-foreground"> a sua nova plataforma?</span>
+              <span className="text-foreground">Para quem foi feito e onde aplicar</span>
             </h2>
           </div>
 
@@ -503,27 +490,15 @@ function Landing() {
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="rounded-3xl border border-primary-glow/20 bg-black/20 backdrop-blur-xl p-8"
             >
-              <div className="inline-flex items-center gap-2 text-xs font-bold text-primary-glow uppercase tracking-[0.25em] mb-6">
-                <span className="h-px w-6 bg-primary-glow" /> Seu cliente direto
-              </div>
               <h3 className="text-xl font-black mb-6 leading-snug">
-                Para quem é
+                01 — PARA QUEM É
               </h3>
 
               <div className="space-y-5">
                 {[
-                  {
-                    t: "Empresas de Monitoramento e Controle de Acesso",
-                    d: "Centralize sua operação em um único ecossistema em nuvem, otimize o tempo dos seus operadores e reduza o consumo de infraestrutura local.",
-                  },
-                  {
-                    t: "Integradores de Segurança Eletrônica",
-                    d: "Pare de revender marcas de terceiros. Crie seu próprio patrimônio tecnológico, agregue valor recorrente e garanta contratos de longo prazo.",
-                  },
-                  {
-                    t: "Empresas de Facilidades e Portaria Presencial",
-                    d: "Modernize a mão de obra alocada nos postos. Substitua processos manuais por uma triagem digital rápida e livre de falhas humanas.",
-                  },
+                  { t: "Empresas de monitoramento e controle de acesso" },
+                  { t: "Integradores" },
+                  { t: "Administradores de condomínios" },
                 ].map((item, i) => (
                   <motion.div
                     key={i}
@@ -540,11 +515,13 @@ function Landing() {
                       <h4 className="font-bold text-lg mb-1 group-hover:text-secondary-glow transition-colors duration-200">
                         {item.t}
                       </h4>
-                      <p className="text-lg text-muted-foreground leading-relaxed">{item.d}</p>
                     </div>
                   </motion.div>
                 ))}
               </div>
+              <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+                Transforme essa tecnologia em um modelo de negócios previsível, escalável e de alto valor para seus clientes.
+              </p>
             </motion.div>
 
             {/* Quadro B — Onde se Aplica */}
@@ -555,40 +532,18 @@ function Landing() {
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="rounded-3xl border border-primary-glow/20 bg-black/20 backdrop-blur-xl p-8"
             >
-              <div className="inline-flex items-center gap-2 text-xs font-bold text-primary-glow uppercase tracking-[0.25em] mb-6">
-                <span className="h-px w-6 bg-primary-glow" /> Cenários de venda
-              </div>
               <h3 className="text-xl font-black mb-6 leading-snug">
-                Onde se aplica
+                02 — ONDE SE APLICA
               </h3>
+              <p className="text-lg text-muted-foreground leading-relaxed mb-4">Empresas de todos os setores</p>
 
               <div className="space-y-3">
                 {[
-                  {
-                    icon: Building2,
-                    t: "Condomínios Residenciais",
-                    d: "Gestão fluida para prédios compactos ou grandes complexos horizontais.",
-                  },
-                  {
-                    icon: Truck,
-                    t: "Condomínios Logísticos e Industriais",
-                    d: "Triagem pesada de caminhões, motoristas, controle de docas e auditoria de setores restritos.",
-                  },
-                  {
-                    icon: Briefcase,
-                    t: "Edifícios Corporativos",
-                    d: "Gerenciamento dinâmico de recepções, catracas integradas e convites digitais para reuniões.",
-                  },
-                  {
-                    icon: LayoutGrid,
-                    t: "Coworkings e Espaços Compartilhados",
-                    d: "Automação total de acessos integrada à agenda, sem necessidade de recepção física ativa.",
-                  },
-                  {
-                    icon: GraduationCap,
-                    t: "Escolas, Academias e Clubes",
-                    d: "Validação ágil de planos na entrada e controle rigoroso de fluxo por catracas.",
-                  },
+                  { icon: Building2, t: "Condomínios Residenciais" },
+                  { icon: Truck, t: "Condomínios Logísticos e Industriais" },
+                  { icon: Briefcase, t: "Edifícios Corporativos" },
+                  { icon: LayoutGrid, t: "Coworkings e Espaços Compartilhados" },
+                  { icon: GraduationCap, t: "Escolas, Academias e Clubes" },
                 ].map((item, i) => (
                   <motion.div
                     key={i}
@@ -605,7 +560,6 @@ function Landing() {
                       <h4 className="font-bold text-lg mb-0.5 group-hover:text-primary-glow transition-colors duration-200">
                         {item.t}
                       </h4>
-                      <p className="text-lg text-muted-foreground leading-relaxed">{item.d}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -730,12 +684,12 @@ function Landing() {
 
 
             {/* PREVIEW */}
-      <section id="preview" className="py-12 lg:py-28 relative overflow-hidden">
+      <section id="preview" className="py-12 xl:py-28 relative overflow-hidden">
         <div className="absolute top-10 left-1/3 w-80 h-80 bg-primary/10 rounded-full blur-[110px]" />
         <div className="absolute bottom-10 right-1/3 w-96 h-96 bg-primary-glow/10 rounded-full blur-[110px]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.08),transparent_45%),radial-gradient(circle_at_80%_60%,rgba(147,51,234,0.08),transparent_45%)]" />
-        <div className="py-10 flex flex-col lg:flex-row items-center justify-center gap-8 max-w-7xl mx-auto px-6">
-          <div className="max-w-[1100px] w-full flex flex-col gap-4">
+        <div className="py-10 flex flex-col xl:flex-row items-center justify-center gap-8 max-w-7xl mx-auto px-6">
+          <div className="max-w-[1100px] xl:max-w-[620px] w-full flex flex-col gap-4">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
               SINTAC — {" "}
               <span
@@ -750,11 +704,11 @@ function Landing() {
               Desenvolvemos uma solução robusta, escalável e de rápida implantação, projetada especificamente para empresas de segurança eletrônica, facilities e controle de acesso.Nós cuidamos da evolução tecnológica, da estabilidade dos servidores e das atualizações de segurança, enquanto você lidera o mercado local com uma solução de alto valor agregado. Entregue uma central de comando de bolso para o seu cliente: abra portões, autorize visitantes e monitore acessos com total mobilidade e precisão.
             </p>
           </div>
-          <div className="flex-shrink-0 lg:translate-x-16 max-w-[650px] w-full lg:w-auto">
+          <div className="flex-shrink-0 max-w-[560px] xl:max-w-[650px] w-full xl:w-auto xl:translate-x-16">
             <img
               src={system}
               alt="Sistema Sintac"
-              className="w-full lg:max-w-[700px] rounded-xl"
+              className="w-full xl:max-w-[700px] rounded-xl"
             />
           </div>
         </div>
