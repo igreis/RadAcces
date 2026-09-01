@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import {
   Shield, Users, KeyRound, Calendar, Zap, ArrowRight, Radar, Plus,
-  Briefcase, Truck, LayoutGrid, GraduationCap, Building2, Phone, BarChart3,
+  Briefcase, Truck, LayoutGrid, GraduationCap, Building, Building2, Phone, BarChart3,
   Camera, Brain, MessageSquare, Package, Ticket
 } from "lucide-react";
 import screenLogin from "@/assets/login.png";
@@ -18,6 +18,7 @@ import nice from "@/assets/icons/nice.png"
 import zk_teco from "@/assets/icons/zk-teco.png"
 import system from "@/assets/system.svg"
 import logo from '../assets/logo.png'
+import brazil from '../assets/location.png'
 import WhatsAppFloat from '../components/ui/Whatsappfloat'
 import { useState } from "react";
 import CountUp from "react-countup";
@@ -87,7 +88,7 @@ const faqs: FAQItem[] = [
   {
     question: "Como a plataforma lida com a LGPD e a segurança dos dados?",
     answer:
-      "Toda a nossa infraestrutura está hospedada em data center próprio com backup na AWS.",
+      "Toda a nossa infraestrutura está hospedada na AWS (Amazon Web Services) com servidores no Brasil. Os dados são criptografados de ponta a ponta e operam em total conformidade com as exigências da Lei Geral de Proteção de Dados (LGPD).",
   },
   {
     question: "Como funciona o suporte técnico para o integrador?",
@@ -222,7 +223,6 @@ function Landing() {
               <a href="#integracoes" className="hover:text-primary-glow transition">Integrações</a>
               <a href="#publico" className="hover:text-primary-glow transition">Público</a>
               <a href="#how" className="hover:text-primary-glow transition">Diferenciais</a>
-              <a href="#preview" className="hover:text-primary-glow transition">Sobre nós</a>
               <a href="#faq" className="hover:text-primary-glow transition">FAQ</a>
             </nav>
             <a  href="https://wa.me/5534992318655"
@@ -317,13 +317,10 @@ function Landing() {
                 <div className="text-xs sm:text-sm text-muted-foreground">Anos de serviço</div>
               </div>
               <div className="min-w-0 space-y-2">
-                <div className="whitespace-nowrap text-3xl sm:text-4xl font-bold text-primary">
-                 
-                    <CountUp end={11} duration={5} />
-                
-                  <span>+</span>
+                <div className="flex justify-center md:block whitespace-nowrap text-3xl sm:text-4xl font-bold text-primary">
+                    <img src={brazil} className="h-10"/>
                 </div>
-                <div className="text-xs sm:text-sm text-muted-foreground">Localidades</div>
+                <div className="text-xs sm:text-sm text-muted-foreground">Abrangência Nacional</div>
               </div>
             </div>
           </motion.div>
@@ -436,12 +433,6 @@ function Landing() {
             Tecnologia compatível com o que você{" "}
             <span className="text-primary-glow">já usa em campo.</span>
           </h2>
-
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-            Nossa plataforma possui integrações nativas com os principais
-            fabricantes de hardware de reconhecimento facial, biometria, leitura de placas (LPR),
-            tags e dispositivos IoT do mundo.
-          </p>
         </div>
 
         {/* Carrossel */}
@@ -496,9 +487,9 @@ function Landing() {
 
               <div className="space-y-5">
                 {[
-                  { t: "Empresas de monitoramento e controle de acesso" },
+                  { t: "Empresas de controle de acesso e seguranca eletronica" },
                   { t: "Integradores" },
-                  { t: "Administradores de condomínios" },
+                  { t: "Administradoras de condomínios" },
                 ].map((item, i) => (
                   <motion.div
                     key={i}
@@ -535,10 +526,10 @@ function Landing() {
               <h3 className="text-xl font-black mb-6 leading-snug">
                 02 — ONDE SE APLICA
               </h3>
-              <p className="text-lg text-muted-foreground leading-relaxed mb-4">Empresas de todos os setores</p>
+              <div>
 
-              <div className="space-y-3">
                 {[
+                  { icon: Building, t: "Empresas de todos os setores" },
                   { icon: Building2, t: "Condomínios Residenciais" },
                   { icon: Truck, t: "Condomínios Logísticos e Industriais" },
                   { icon: Briefcase, t: "Edifícios Corporativos" },
@@ -683,36 +674,7 @@ function Landing() {
       </section>
 
 
-            {/* PREVIEW */}
-      <section id="preview" className="py-12 xl:py-28 relative overflow-hidden">
-        <div className="absolute top-10 left-1/3 w-80 h-80 bg-primary/10 rounded-full blur-[110px]" />
-        <div className="absolute bottom-10 right-1/3 w-96 h-96 bg-primary-glow/10 rounded-full blur-[110px]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.08),transparent_45%),radial-gradient(circle_at_80%_60%,rgba(147,51,234,0.08),transparent_45%)]" />
-        <div className="py-10 flex flex-col xl:flex-row items-center justify-center gap-8 max-w-7xl mx-auto px-6">
-          <div className="max-w-[1100px] xl:max-w-[620px] w-full flex flex-col gap-4">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
-              SINTAC — {" "}
-              <span
-                className="text-gradient-primary"
-              >
-                Acesso Total.
-              </span>
-              <br />
-              Controle Absoluto
-            </h1>
-            <p className="text-muted-foreground text-xl leading-relaxed">
-              Desenvolvemos uma solução robusta, escalável e de rápida implantação, projetada especificamente para empresas de segurança eletrônica, facilities e controle de acesso.Nós cuidamos da evolução tecnológica, da estabilidade dos servidores e das atualizações de segurança, enquanto você lidera o mercado local com uma solução de alto valor agregado. Entregue uma central de comando de bolso para o seu cliente: abra portões, autorize visitantes e monitore acessos com total mobilidade e precisão.
-            </p>
-          </div>
-          <div className="flex-shrink-0 max-w-[560px] xl:max-w-[650px] w-full xl:w-auto xl:translate-x-16">
-            <img
-              src={system}
-              alt="Sistema Sintac"
-              className="w-full xl:max-w-[700px] rounded-xl"
-            />
-          </div>
-        </div>
-      </section>
+      
 
 
       {/* FAQ */}
