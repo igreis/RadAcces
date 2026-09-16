@@ -73,7 +73,7 @@ const faqs: FAQItem[] = [
   {
     question: "Preciso pagar alguma taxa de adesão ou fidelidade?",
     answer:
-      "Não. Não cobramos taxa de implantação (setup) e não exigimos fidelidade contratual. Nosso faturamento é sob demanda: você paga apenas pelos apartamentos ou usuários ativos no mês.",
+      "Não. Não cobramos taxa de implantação (setup) e não exigimos fidelidade contratual. Nosso faturamento é sob demanda.",
   },
   {
     question: "Quais modelos de portaria o sistema suporta?",
@@ -93,7 +93,7 @@ const faqs: FAQItem[] = [
   {
     question: "Como funciona o suporte técnico para o integrador?",
     answer:
-      "Oferecemos treinamento para as equipes, para que as equipes possam operar com facilidade e autonomia.",
+      "Oferecemos treinamento para as equipes para que possam operar com facilidade e autonomia. Além disso, temos suporte técnico humanizado 24h.",
   },
 ];
 
@@ -238,13 +238,13 @@ function Landing() {
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute inset-x-0 h-px bg-gradient-to-r from-transparent via-primary-glow to-transparent animate-hud-scan opacity-70" />
         </div>
-        <div className="absolute -right-40 top-20 w-[600px] h-[600px] pointer-events-none opacity-30 animate-hud-rotate">
+        <div className="absolute -right-40 top-20 hidden h-[600px] w-[600px] pointer-events-none opacity-30 animate-hud-rotate sm:block">
           <div className="absolute inset-0 rounded-full border border-primary-glow/40" />
           <div className="absolute inset-10 rounded-full border border-primary-glow/30 border-dashed" />
           <div className="absolute inset-24 rounded-full border border-accent/40" />
         </div>
-        <div className="absolute top-20 -left-20 h-96 w-96 rounded-full bg-primary/40 blur-[140px]" />
-        <div className="absolute bottom-0 right-0 h-[28rem] w-[28rem] rounded-full bg-accent/30 blur-[140px]" />
+        <div className="absolute top-20 -left-20 hidden h-96 w-96 rounded-full bg-primary/40 blur-[140px] sm:block" />
+        <div className="absolute bottom-0 right-0 hidden h-[28rem] w-[28rem] rounded-full bg-accent/30 blur-[140px] sm:block" />
 
         <div className="relative max-w-7xl mx-auto px-6 flex flex-col xl:grid xl:grid-cols-12 gap-6 sm:gap-12 items-center">
           <motion.div
@@ -332,8 +332,8 @@ function Landing() {
             className="xl:col-span-5 relative w-full"
           >
             <div className="relative max-xl:left-1/2 max-xl:-translate-x-1/2 xl:mx-auto w-[500px] md:w-[700px] h-[700px] rounded-full">
-              <div className="absolute -inset-16 bg-primary/40 blur-3xl rounded-full animate-hud-pulse" />
-              <div className="absolute -inset-12 rounded-full border border-primary-glow/30 animate-hud-rotate" style={{ animationDuration: "20s" }}>
+              <div className="absolute -inset-8 bg-primary/30 blur-2xl rounded-full sm:-inset-16 sm:bg-primary/40 sm:blur-3xl sm:animate-hud-pulse" />
+              <div className="absolute -inset-6 rounded-full border border-primary-glow/30 sm:-inset-12 sm:animate-hud-rotate" style={{ animationDuration: "20s" }}>
                 <Plus className="absolute -top-2 left-1/2 -translate-x-1/2 h-4 w-4 text-primary-glow" />
                 <Plus className="absolute -bottom-2 left-1/2 -translate-x-1/2 h-4 w-4 text-primary-glow" />
                 <Plus className="absolute top-1/2 -left-2 -translate-y-1/2 h-4 w-4 text-primary-glow" />
@@ -408,19 +408,19 @@ function Landing() {
               className="group inline-flex items-center gap-2 px-6 py-3 rounded-2xl border border-primary-glow/30 bg-black/20 backdrop-blur-sm text-sm font-medium text-primary-glow hover:border-primary-glow/60 hover:bg-card/40 transition-all duration-200"
             >
               {showAll ? "Mostrar menos" : "Mostrar todas as funcionalidades"}
-              <span className={`transition-transform duration-300 ${showAll ? "rotate-180" : ""}`}>↓</span>
+              <span className={`transition-transform duration-300 ${showAll ? "rotate-180" : ""}`} id="integracoes">↓</span>
             </button>
-            <p className="text-xl font-bold text-primary-glow uppercase tracking-wider">E MUITO MAIS!</p>
+            <p className="text-xl font-bold text-primary-glow uppercase tracking-wider" >E MUITO MAIS!</p>
           </motion.div>
 
         </div>
       </section>
 
             {/* STATS / INTEGRAÇÕES */}
-      <section id="integracoes" className="relative border-y border-primary-glow/20 bg-card/20 backdrop-blur-xl overflow-hidden py-16">
+      <section  className="relative border-y border-primary-glow/20 bg-card/20 backdrop-blur-xl overflow-hidden py-16">
 
         {/* Cabeçalho */}
-        <div className="max-w-3xl mx-auto text-center mb-12 px-6">
+        <div className="max-w-3xl mx-auto text-center mb-12 px-6" >
           <div className="flex items-center justify-center gap-3 mb-6">
             <span className="h-px w-12 bg-primary-glow/40" />
             <span className="text-[18px] uppercase tracking-[0.3em] text-primary-glow/70 font-mono">

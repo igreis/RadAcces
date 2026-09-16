@@ -7,7 +7,7 @@ const Footer = () => {
     return (
         <footer className="relative border-t border-primary/20 bg-card/30 backdrop-blur-sm">
             <div className="container mx-auto px-6 py-12">
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div className="grid grid-cols-1 md:grid-cols-5 gap-8 mb-8">
                     {/* Brand */}
                     <div className="space-y-4">
                         <div className="flex flex-col leading-none max-w-[160px]">
@@ -53,29 +53,55 @@ const Footer = () => {
                         <h3 className="font-semibold text-foreground">Empresa</h3>
                         <ul className="space-y-2 text-sm text-muted-foreground">
                             <li>
-                                <a href="#about" className="hover:text-primary transition-colors">
-                                    Sobre Nós
+                                <a href="#features" className="hover:text-primary transition-colors">
+                                    Funcionalidades
                                 </a>
                             </li>
                             <li>
-                                <a href="#" className="hover:text-primary transition-colors">
-                                    Carreiras
+                                <a href="#integracoes" className="hover:text-primary transition-colors">
+                                    Integrações
                                 </a>
                             </li>
                             <li>
-                                <a href="#" className="hover:text-primary transition-colors">
-                                    Blog
+                                <a href="#publico" className="hover:text-primary transition-colors">
+                                    Público 
                                 </a>
                             </li>
                             <li>
-                                <a href="#contact" className="hover:text-primary transition-colors">
-                                    Contato
+                                <a href="#how" className="hover:text-primary transition-colors">
+                                    Diferenciais 
                                 </a>
                             </li>
                         </ul>
                     </div>
 
                     {/* Social */}
+                    <div className="space-y-4">
+                        <h3 className="font-semibold text-foreground">Contatos</h3>
+                        <ul className="space-y-2 text-sm text-muted-foreground">
+                            <li>
+                                <a href="tel:+5534992318655" className="hover:text-primary transition-colors">
+                                    +55 (34) 99231-8655
+                                </a>
+                            </li>
+                            <li>
+                                <a href="tel:+5534998380404" className="hover:text-primary transition-colors">
+                                    +55 (34) 99838-0404
+                                </a>
+                            </li>
+                            <li>
+                                <a href="tel:+553430100101" className="hover:text-primary transition-colors">
+                                    +55 (34) 3010-0101
+                                </a>
+                            </li>
+                            <li className="mt-2">
+                                <a href="mailto:contato@m3uzz.com" className="hover:text-primary transition-colors">
+                                    sintac@m3uzz.com
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
                     <div className="space-y-4">
                         <h3 className="font-semibold text-foreground">Redes Sociais</h3>
                         <div className="flex items-center gap-3">
